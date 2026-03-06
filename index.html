@@ -126,7 +126,7 @@ border-radius:20px;
 font-size:14px;
 }
 
-/* CSS ใหม่สำหรับเลื่อนแนวนอน */
+/* CSS สำหรับเลื่อนแนวนอน */
 .scroll-container {
 display: flex;
 overflow-x: auto;
@@ -137,11 +137,13 @@ padding-bottom: 10px;
 }
 
 .scroll-item {
-flex: 0 0 85%; /* ปรับขนาดให้เห็นรูปถัดไปนิดหน่อย */
+flex: 0 0 85%;
 scroll-snap-align: start;
 border-radius: 15px;
 overflow: hidden;
 border: 1px solid #eee;
+display: flex;
+flex-direction: column;
 }
 
 .scroll-item img {
@@ -195,10 +197,15 @@ border:1px solid #ffeef5;
 <img src="Logo.png" alt="Julylyn Shop">
 </div>
 <h1>Julylyn Shop</h1>
-<p style="color:var(--dark);opacity:.8;margin:10px 0 20px;">
-ยินดีต้อนรับเข้าสู่อาณาจักรจูจู้
-ร้านจูบริการปล่อยเช่าไอดีเติมเกมและจำหน่ายแอพพรี 🌸
-</p>
+
+<div style="color:var(--dark); opacity:.8; margin:10px 0 20px; line-height: 1.6;">
+    <p>ยินดีต้อนรับสู่อาณาจักร 𓈒 น้องจูจู้  ݁ ♡</p>
+    <p>ในนี้จะรวมรายการทั้งหมดที่จูมีนะคะ</p>
+    <br>
+    <p>หากสนใจเช่าไอดีหรือเติมเกมสามารถแคป</p>
+    <p>ทักมาสอบถามจูได้เลยคะ</p>
+</div>
+
 <div class="badges">
 <div class="badge">🌸 บริการเติมเกม</div>
 <div class="badge">⭐ ปล่อยเช่าไอดี</div>
@@ -209,12 +216,23 @@ border:1px solid #ffeef5;
 </div>
 
 <div class="section">
-<h2>🎮 รวมไอดีปล่อยเช่า</h2>
-<div class="step"><div class="step-num">1</div><div><a href="https://drive.google.com/drive/folders/1yyUMyDBT5oQKKbGupSjb-r0F50KxF0aj" style="text-decoration:none;color:inherit;">ไอดีเช่า ROV คลิก!</a></div></div>
-<div class="step"><div class="step-num">2</div><div><a href="https://drive.google.com/drive/folders/1puqVWxuTHpE9RrYpFxfeCckJsLEb7I--" style="text-decoration:none;color:inherit;">ไอดีเช่า MLBB คลิก!</a></div></div>
-<div class="step"><div class="step-num">3</div><div><a href="https://drive.google.com/drive/folders/1UTg87Dz39wSdzgUIwU-sv5gRrPw3RA6B" style="text-decoration:none;color:inherit;">ไอดีเช่า HOK คลิก!</a></div></div>
+<h2 class="center">รวมไอดีปล่อยเช่า</h2>
+<p class="center" style="margin-bottom:15px; color:var(--dark);">◟ ``  ⸝⸝⠀˒    ROV ! ◞ ☆</p>
+<p class="center" style="font-size:14px; margin-bottom:15px;">ปล่อยเช่าไอดีเกม Garena Rov</p>
 
-<p class="center" style="font-size: 16px; color: #000000; margin-top: 10px;">จองคิวเช่าไอดีจิ้มลิงค์ด้านล่าง</p>
+<div class="scroll-container">
+    <div class="scroll-item">
+        <img src="A03.jpg" alt="ROV ID 1"> <a href="https://drive.google.com/drive/folders/1m3TiC8jE77IgMdPnmn0JsfyQ75i5eWNK?usp=drive_link" class="btn btn-main" style="margin: 10px; font-size: 13px;">รายละเอียด คลิก!</a>
+    </div>
+    <div class="scroll-item">
+        <img src="mlbb_id1.jpg" alt="MLBB ID 1"> <a href="https://drive.google.com/drive/folders/1puqVWxuTHpE9RrYpFxfeCckJsLEb7I--" class="btn btn-main" style="margin: 10px; font-size: 13px;">เช่าไอดี MLBB คลิก!</a>
+    </div>
+    <div class="scroll-item">
+        <img src="hok_id1.jpg" alt="HOK ID 1"> <a href="https://drive.google.com/drive/folders/1UTg87Dz39wSdzgUIwU-sv5gRrPw3RA6B" class="btn btn-main" style="margin: 10px; font-size: 13px;">เช่าไอดี HOK คลิก!</a>
+    </div>
+</div>
+
+<p class="center" style="font-size: 16px; color: #000000; margin-top: 15px;">จองคิวเช่าไอดีจิ้มลิงค์ด้านล่าง</p>
 
 <a href="https://lin.ee/o1GvNgZ" class="btn btn-main">Line AO</a>
 <a href="https://www.facebook.com/share/1K1REDAqkB/?mibextid=wwXIfr" class="btn btn-main">Facebook</a>
