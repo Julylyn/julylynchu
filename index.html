@@ -123,18 +123,19 @@ color: var(--text-light);
 /* CSS สำหรับเลื่อนแนวนอน (Horizontal Scroll) ทั้งมือถือและคอม */
 .scroll-container {
 display: flex;
-overflow-x: auto;
+overflow-x: auto; /* เปิดการเลื่อนแนวนอน */
 gap: 12px;
-padding: 5px 5px 15px 5px;
-scroll-snap-type: x mandatory;
--webkit-overflow-scrolling: touch;
-cursor: grab;
+padding: 5px 5px 15px 5px; /* พื้นหลังปกติมีช่องว่างบน */
+scroll-snap-type: x mandatory; /* ให้รูปหยุดตรงกลางพอดี */
+-webkit-overflow-scrolling: touch; /* เลื่อนแบบลื่นใน iOS */
+cursor: grab; /* เปลี่ยนเมาส์เป็นรูปมือในคอม */
 }
 
 .scroll-container:active {
 cursor: grabbing;
 }
 
+/* ซ่อน scrollbar ใน Chrome, Safari, Opera */
 .scroll-container::-webkit-scrollbar {
 height: 6px;
 }
@@ -149,7 +150,7 @@ background: transparent;
 }
 
 .scroll-item {
-flex: 0 0 85%;
+flex: 0 0 85%; /* ขนาดรูปในมือถือ */
 scroll-snap-align: center;
 border-radius: 15px;
 overflow: hidden;
@@ -159,13 +160,20 @@ padding-bottom: 5px;
 box-shadow: 0 4px 10px rgba(0,0,0,0.05);
 }
 
-/* EDIT: ปรับกรอบรูปปล่อยเช่า (1:1) ให้พอดีสวยงาม */
+/* EDIT: ปรับกรอบรูปปล่อยเช่า (1:1) ให้พอดีสวยงามและชิดขอบบน */
+.rent-scroll {
+    padding-top: 0 !important; /* ลบช่องว่างด้านบนของ Container */
+}
+
 .rent-scroll .scroll-item {
 flex: 0 0 70%; 
 border: none; /* ลบเส้นขอบออก */
 padding-bottom: 0; /* ลบช่องว่างด้านล่าง */
 background: transparent; /* ให้พื้นหลังใส */
 box-shadow: 0 8px 20px rgba(0,0,0,0.1); /* เพิ่มเงาให้ดูมีมิติแทน */
+/* ลบ border-radius ด้านบนเพื่อให้ชิดขอบ */
+border-top-left-radius: 0;
+border-top-right-radius: 0;
 }
 
 /* เมื่อเปิดในคอมพิวเตอร์ (จอใหญ่กว่า 768px) */
@@ -185,11 +193,15 @@ object-fit: cover;
 pointer-events: none;
 }
 
-/* กำหนดขนาดรูปปล่อยเช่าเป็น 1:1 และให้เห็นจากหัวถึงกลางรูป */
+/* กำหนดขนาดรูปปล่อยเช่าเป็น 1:1 และให้เห็นจากหัวถึงกลางรูป และชิดขอบบน */
 .rent-scroll .scroll-item img {
     aspect-ratio: 1 / 1;
     object-position: top center;
-    border-radius: 15px; /* ใส่ความโค้งที่ตัวรูปภาพโดยตรง */
+    /* EDIT: ลบความโค้งด้านบนออกเพื่อให้ชิดขอบ */
+    border-top-left-radius: 0;
+    border-top-right-radius: 0;
+    border-bottom-left-radius: 15px;
+    border-bottom-right-radius: 15px;
 }
 
 .footer{
