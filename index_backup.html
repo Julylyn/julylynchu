@@ -1,0 +1,327 @@
+<!DOCTYPE html>
+<html lang="th">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Julylyn Shop - Official</title>
+
+<link href="https://fonts.googleapis.com/css2?family=Mitr:wght@300;400;500&display=swap" rel="stylesheet">
+
+<style>
+:root{
+/* EDIT: ปรับโทนสีใหม่ ฟ้า-ชมพู พาสเทล */
+--bg-start: #FFEBF2;  /* ชมพูพาสเทลอ่อน (จุดเริ่มต้นไล่สี) */
+--bg-end: #F0F8FF;    /* ฟ้าพาสเทลอ่อน (จุดสิ้นสุดไล่สี) */
+--white: #FFFFFF;     /* สีพื้นหลัง Section (ขาวสะอาด) */
+--main: #81D4FA;      /* ฟ้าพาสเทลสว่าง (ปุ่มหลัก, ขอบ, ตัวเลข) */
+--dark: #F48FB1;      /* ชมพูพาสเทลเข้มขึ้นนิดหน่อย (หัวข้อ, ข้อความเน้น) */
+--text-on-main: #FFFFFF; /* สีตัวอักษรบนปุ่มสว่าง */
+--text-light: #546E7A;  /* สีข้อความทั่วไป (เทาอมฟ้าเข้ม) */
+--glow: 0 0 15px rgba(129, 212, 250, 0.5); /* เอฟเฟกต์เรืองแสงสีฟ้าอ่อน */
+}
+
+*{margin:0;padding:0;box-sizing:border-box;font-family:'Mitr',sans-serif;}
+
+body{
+/* EDIT: พื้นหลังชมพูไล่ระดับ */
+background: linear-gradient(135deg, var(--bg-start) 0%, var(--bg-end) 100%);
+background-attachment: fixed; /* ให้พื้นหลังนิ่งเวลารูด */
+display:flex;
+justify-content:center;
+color: var(--text-light);
+}
+
+.container{
+max-width:500px;
+width:100%;
+padding:20px 15px 40px;
+}
+
+.section{
+background:var(--white);
+border-radius:20px;
+padding:25px 20px;
+margin-bottom:20px;
+box-shadow: 0 8px 25px rgba(244, 143, 177, 0.15); /* เงาสีชมพูอ่อนๆ */
+border: 2px solid var(--main);
+/* EDIT: เพิ่มเรืองแสงอ่อนๆ ให้ขอบ */
+box-shadow: 0 0 10px rgba(129, 212, 250, 0.2);
+}
+
+h1,h2,h3{
+color:var(--dark); /* หัวข้อสีชมพูพาสเทล */
+text-shadow: 1px 1px 0px rgba(255, 255, 255, 0.8); /* เพิ่มมิติ */
+}
+.center{text-align:center;}
+
+.logo{
+width:150px;height:150px;
+border-radius:50%;
+overflow:hidden;
+margin:0 auto 20px;
+/* EDIT: เรืองแสงสีฟ้า */
+box-shadow: 0 0 20px rgba(129, 212, 250, 0.4);
+border: 4px solid var(--main);
+background-color: #fff; /* กันรูปโลโก้โปร่งแสง */
+}
+
+.logo img{width:100%;height:100%;object-fit:cover;}
+
+.badges{
+display:flex;
+flex-wrap:wrap;
+justify-content:center;
+gap:10px;
+margin-bottom:20px;
+}
+
+.badge{
+/* EDIT: ปรับสี Badge ฟ้าพาสเทล */
+background: #E1F5FE;
+padding:8px 16px;
+border-radius:25px;
+box-shadow: 0 4px 8px rgba(129, 212, 250, 0.2);
+font-size:13px;
+color:var(--dark); /* ตัวหนังสือชมพู */
+border: 1px solid var(--main);
+}
+
+.btn{
+display:block;
+text-align:center;
+padding:14px;
+border-radius:25px;
+text-decoration:none;
+margin-top:15px;
+font-weight:500;
+transition: all 0.3s ease;
+}
+
+.btn:hover {
+transform: translateY(-2px);
+}
+
+.btn-outline{
+/* EDIT: ปรับสีปุ่มเส้นประ ชมพู */
+background:transparent;
+border:2px dashed var(--dark);
+color:var(--dark);
+}
+
+.btn-outline:hover {
+background: rgba(244, 143, 177, 0.05);
+box-shadow: 0 0 10px rgba(244, 143, 177, 0.3);
+}
+
+.btn-main{
+/* EDIT: ปรับสีปุ่มหลัก ฟ้าพาสเทล */
+background:var(--main);
+color:var(--text-on-main);
+box-shadow: 0 4px 12px rgba(129, 212, 250, 0.4);
+}
+
+.btn-main:hover {
+background: #B3E5FC; /* สว่างขึ้นเวลารูดโดน */
+box-shadow: 0 0 20px rgba(129, 212, 250, 0.6);
+}
+
+.price-row{
+display:flex;
+justify-content:space-between;
+flex-direction: column;
+margin-bottom:10px;
+/* EDIT: ปรับสีพื้นหลังแถวราคา ชมพูอ่อนๆ */
+background:#FFF3F8;
+padding:10px 15px;
+border-radius:15px;
+border: 1px solid #FFE0F0;
+color: var(--text-light);
+}
+
+/* CSS สำหรับเลื่อนแนวนอน */
+.scroll-container {
+display: flex;
+overflow-x: auto;
+gap: 12px;
+scroll-snap-type: x mandatory;
+padding-bottom: 15px;
+-webkit-overflow-scrolling: touch;
+scrollbar-width: none; /* ซ่อน scrollbar สำหรับ Firefox */
+}
+
+.scroll-container::-webkit-scrollbar {
+display: none; /* ซ่อน scrollbar สำหรับ Chrome/Safari */
+}
+
+.scroll-item {
+flex: 0 0 85%;
+scroll-snap-align: center;
+border-radius: 15px;
+overflow: hidden;
+background: #fff;
+border: 1px solid #eee;
+padding-bottom: 5px;
+}
+
+.scroll-item img {
+width: 100%;
+display: block;
+object-fit: cover;
+}
+
+.footer{
+text-align:center;
+margin-top:30px;
+color: var(--text-light);
+}
+
+.socials{
+display:flex;
+gap:8px;
+justify-content:center;
+margin-top:15px;
+}
+
+.socials a{
+flex:1;
+max-width:100px;
+text-align:center;
+padding:10px;
+border-radius:25px;
+/* EDIT: ปรับสี Social ชมพู */
+background:#FFE0F0;
+text-decoration:none;
+color:var(--dark);
+font-size:13px;
+border:1px solid var(--dark);
+transition: all 0.3s ease;
+}
+
+.socials a:hover {
+background: var(--dark);
+color: var(--text-on-main);
+box-shadow: 0 0 10px rgba(244, 143, 177, 0.5);
+}
+
+.small{font-size:12px;opacity:.7;margin-top:10px; color: var(--text-light);}
+</style>
+</head>
+
+<body>
+<div class="container">
+
+<div class="section center" style="border:none;box-shadow:none;background:transparent;">
+<div class="logo">
+<img src="Logo.png" alt="Julylyn Shop">
+</div>
+<h1>Julylyn Shop</h1>
+
+<div style="color:var(--text-light); opacity:.9; margin:10px 0 20px; line-height: 1.6;">
+    <p>ยินดีต้อนรับสู่อาณาจักร 𓈒 น้องจูจู้  ݁ ♡</p>
+    <p>ในนี้จะรวมรายการทั้งหมดที่จูมีนะคะ</p>
+    <br>
+    <p>หากสนใจเช่าไอดีหรือเติมเกมสามารถแคป</p>
+    <p>ทักมาสอบถามจูได้เลยคะ</p>
+</div>
+
+<div class="badges">
+<div class="badge">🌸 บริการเติมเกม</div>
+<div class="badge">⭐ ปล่อยเช่าไอดี</div>
+<div class="badge">🧺 จำหน่ายแอพพรี</div>
+<div class="badge">📋 กฏการเช่าและวิธียืนยันตัวตน</div>
+</div>
+<a href="#" class="btn btn-outline">Open-Close 08:30-00:00 ✨</a>
+</div>
+
+<div class="section">
+<h2 class="center">รวมไอดีปล่อยเช่า</h2>
+<p class="center" style="font-size:15px; margin-bottom:15px; color: var(--text-light);">ปล่อยเช่าไอดีเกม Garena Rov</p>
+
+<div class="scroll-container">
+    <div class="scroll-item">
+        <img src="A03.jpg" alt="ROV ID 1"> 
+        <a href="https://drive.google.com/drive/folders/1m3TiC8jE77IgMdPnmn0JsfyQ75i5eWNK?usp=drive_link" class="btn btn-main" style="margin: 10px; font-size: 13px;">รายละเอียด คลิก!</a>
+    </div>
+    <div class="scroll-item">
+        <img src="MB01.jpg" alt="ROV ID 2"> 
+        <a href="https://drive.google.com/drive/folders/1ZjXS5cOISqqID-lEsfuQnUmg2HBcSIvw?usp=drive_link" class="btn btn-main" style="margin: 10px; font-size: 13px;">รายละเอียด คลิก!</a>
+    </div>
+    <div class="scroll-item">
+        <img src="Modell02.jpg" alt="ROV ID 3"> 
+        <a href="https://drive.google.com/drive/folders/1MdLroYR82tFUWSHG-7DZL7KCEWd3WE7T?usp=drive_link" class="btn btn-main" style="margin: 10px; font-size: 13px;">รายละเอียด คลิก!</a>
+    </div>
+</div>
+
+<p class="center" style="font-size:15px; margin-bottom:15px; color: var(--text-light);">ปล่อยเช่าไอดีเกม Mobile Legend</p>
+
+<div class="scroll-container">
+    <div class="scroll-item">
+        <img src="A03.jpg" alt="MLBB ID 1"> 
+        <a href="https://drive.google.com/drive/folders/1m3TiC8jE77IgMdPnmn0JsfyQ75i5eWNK?usp=drive_link" class="btn btn-main" style="margin: 10px; font-size: 13px;">รายละเอียด คลิก!</a>
+    </div>
+    <div class="scroll-item">
+        <img src="MB01.jpg" alt="MLBB ID 2"> 
+        <a href="https://drive.google.com/drive/folders/1ZjXS5cOISqqID-lEsfuQnUmg2HBcSIvw?usp=drive_link" class="btn btn-main" style="margin: 10px; font-size: 13px;">รายละเอียด คลิก!</a>
+    </div>
+    <div class="scroll-item">
+        <img src="Modell02.jpg" alt="MLBB ID 3"> 
+        <a href="https://drive.google.com/drive/folders/1MdLroYR82tFUWSHG-7DZL7KCEWd3WE7T?usp=drive_link" class="btn btn-main" style="margin: 10px; font-size: 13px;">รายละเอียด คลิก!</a>
+    </div>
+</div>
+
+<p class="center" style="font-size:15px; margin-bottom:15px; color: var(--text-light);">ปล่อยเช่าไอดีเกม Honor of king</p>
+
+<div class="scroll-container">
+    <div class="scroll-item">
+        <img src="A03.jpg" alt="HOK ID 1"> 
+        <a href="https://drive.google.com/drive/folders/1m3TiC8jE77IgMdPnmn0JsfyQ75i5eWNK?usp=drive_link" class="btn btn-main" style="margin: 10px; font-size: 13px;">รายละเอียด คลิก!</a>
+    </div>
+    <div class="scroll-item">
+        <img src="MB01.jpg" alt="HOK ID 2"> 
+        <a href="https://drive.google.com/drive/folders/1ZjXS5cOISqqID-lEsfuQnUmg2HBcSIvw?usp=drive_link" class="btn btn-main" style="margin: 10px; font-size: 13px;">รายละเอียด คลิก!</a>
+    </div>
+    <div class="scroll-item">
+        <img src="Modell02.jpg" alt="HOK ID 3"> 
+        <a href="https://drive.google.com/drive/folders/1MdLroYR82tFUWSHG-7DZL7KCEWd3WE7T?usp=drive_link" class="btn btn-main" style="margin: 10px; font-size: 13px;">รายละเอียด คลิก!</a>
+    </div>
+</div>
+
+<p class="center" style="font-size: 16px; color: var(--text-light); margin-top: 15px;">จองคิวเช่าไอดีจิ้มลิงค์ด้านล่าง</p>
+
+<a href="https://lin.ee/o1GvNgZ" class="btn btn-main">Line@</a>
+<a href="https://www.facebook.com/share/1K1REDAqkB/?mibextid=wwXIfr" class="btn btn-main">Facebook</a>
+</div>
+
+<div class="section">
+<h2>TOPUP</h2>
+
+<div class="scroll-container">
+    <div class="scroll-item">
+        <img src="topuprov.jpg" alt="เติมเกม ROV">
+    </div>
+    <div class="scroll-item">
+        <img src="topuphok.jpg" alt="เติมเกม HOK">
+    </div>
+    <div class="scroll-item">
+        <img src="topupmlbb.jpg" alt="เติมเกม MLBB">
+    </div>
+</div>
+
+<div class="price-row">
+    <p class="center" style="font-size: 16px; color: var(--text-light); margin-top: 15px;">บริการเติมเกม ROV,HOK,MLBB ราคาถูก</p>
+    <p style="font-size: 16px; color: var(--dark); margin-top: 10px; text-shadow: 0 0 3px rgba(244, 143, 177, 0.4);">* โอนเงินแล้วทางร้านไม่คืนเงินทุกกรณีนะคะ</p> 
+    <a href="https://drive.google.com/drive/folders/1ueXM-5H6m5XL9K662SYe71ZOZEhfAkvD?usp=drive_link" class="btn btn-main">ดูรูปเต็มๆ จิ้มม🤏🏻</a>
+</div>
+
+<div class="footer">
+<a href="https://lin.ee/o1GvNgZ" class="btn btn-main">สนใจ/ติดต่อสอบถาม🎀</a>
+<div class="socials">
+<a href="https://www.facebook.com/profile.php?id=61586046260927">Facebook</a>
+<a href="https://lin.ee/o1GvNgZ">Line</a>
+</div>
+<p class="small">© 2026 Julylyn Shop</p>
+</div>
+
+</div>
+</body>
+</html>
