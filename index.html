@@ -10,11 +10,11 @@
 <style>
 :root{
 /* EDIT: ปรับโทนสีใหม่ ฟ้า-ชมพู พาสเทล */
---bg-start: #FFEBF2;  /* ชมพูพาสเทลอ่อน */
---bg-end: #F0F8FF;    /* ฟ้าพาสเทลอ่อน */
---white: #FFFFFF;     /* สีพื้นหลัง Section */
---main: #81D4FA;      /* ฟ้าพาสเทลสว่าง */
---dark: #F48FB1;      /* ชมพูพาสเทลเข้ม */
+--bg-start: #FFEBF2;
+--bg-end: #F0F8FF;
+--white: #FFFFFF;
+--main: #81D4FA;
+--dark: #F48FB1;
 --text-on-main: #FFFFFF;
 --text-light: #546E7A;
 --glow: 0 0 15px rgba(129, 212, 250, 0.5);
@@ -41,7 +41,7 @@ background:var(--white);
 border-radius:20px;
 padding:25px 20px;
 margin-bottom:20px;
-box-shadow: 0 0 10px rgba(129, 212, 250, 0.2);
+box-shadow: 0 8px 25px rgba(244, 143, 177, 0.15);
 border: 2px solid var(--main);
 }
 
@@ -120,38 +120,62 @@ border: 1px solid #FFE0F0;
 color: var(--text-light);
 }
 
-/* CSS สำหรับเลื่อนแนวนอนทั่วไป */
+/* CSS สำหรับเลื่อนแนวนอน (Horizontal Scroll) ทั้งมือถือและคอม */
 .scroll-container {
 display: flex;
-overflow-x: auto;
+overflow-x: auto; /* เปิดการเลื่อนแนวนอน */
 gap: 12px;
-scroll-snap-type: x mandatory;
-padding-bottom: 15px;
--webkit-overflow-scrolling: touch;
-scrollbar-width: none;
+padding: 5px 5px 15px 5px; /* เพิ่มพื้นที่ด้านล่าง */
+scroll-snap-type: x mandatory; /* ให้รูปหยุดตรงกลางพอดี */
+-webkit-overflow-scrolling: touch; /* เลื่อนแบบลื่นใน iOS */
+cursor: grab; /* เปลี่ยนเมาส์เป็นรูปมือในคอม */
 }
 
-.scroll-container::-webkit-scrollbar { display: none; }
+.scroll-container:active {
+cursor: grabbing;
+}
+
+/* ซ่อน scrollbar ใน Chrome, Safari, Opera */
+.scroll-container::-webkit-scrollbar {
+height: 6px;
+}
+
+.scroll-container::-webkit-scrollbar-thumb {
+background: var(--main);
+border-radius: 10px;
+}
+
+.scroll-container::-webkit-scrollbar-track {
+background: transparent;
+}
 
 .scroll-item {
-flex: 0 0 85%;
+flex: 0 0 85%; /* ขนาดรูปในมือถือ */
 scroll-snap-align: center;
 border-radius: 15px;
 overflow: hidden;
 background: #fff;
 border: 1px solid #eee;
-padding-bottom: 5px;
+box-shadow: 0 4px 10px rgba(0,0,0,0.05);
 }
 
-/* EDIT: กำหนดขนาดรูปไอดีปล่อยเช่าให้เล็กลง */
+/* ปรับขนาดเฉพาะรูปไอดีปล่อยเช่าให้เล็กลงเล็กน้อยตามสั่งเดิม */
 .rent-scroll .scroll-item {
-flex: 0 0 70%; /* ปรับขนาดความกว้างให้เล็กลง */
+flex: 0 0 70%; 
+}
+
+/* เมื่อเปิดในคอมพิวเตอร์ (จอใหญ่กว่า 768px) */
+@media (min-width: 768px) {
+    .scroll-item {
+        flex: 0 0 60%; /* ปรับขนาดให้พอดีหน้าจอคอม */
+    }
 }
 
 .scroll-item img {
 width: 100%;
 display: block;
 object-fit: cover;
+pointer-events: none; /* กันการลากรูปภาพผิดพลาด */
 }
 
 .footer{
@@ -178,7 +202,6 @@ text-decoration:none;
 color:var(--dark);
 font-size:13px;
 border:1px solid var(--dark);
-transition: all 0.3s ease;
 }
 
 .small{font-size:12px;opacity:.7;margin-top:10px; color: var(--text-light);}
@@ -213,8 +236,8 @@ transition: all 0.3s ease;
 
 <div class="section">
 <h2 class="center">รวมไอดีปล่อยเช่า</h2>
-<p class="center" style="font-size:15px; margin-bottom:10px; color: var(--text-light);">ปล่อยเช่าไอดีเกม Garena Rov</p>
 
+<p class="center" style="font-size:15px; margin-bottom:10px; color: var(--text-light);">ปล่อยเช่าไอดีเกม Garena Rov</p>
 <div class="scroll-container rent-scroll">
     <div class="scroll-item">
         <img src="A03.jpg" alt="ROV ID 1"> 
