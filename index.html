@@ -123,19 +123,18 @@ color: var(--text-light);
 /* CSS สำหรับเลื่อนแนวนอน (Horizontal Scroll) ทั้งมือถือและคอม */
 .scroll-container {
 display: flex;
-overflow-x: auto; /* เปิดการเลื่อนแนวนอน */
+overflow-x: auto;
 gap: 12px;
-padding: 5px 5px 15px 5px; /* เพิ่มพื้นที่ด้านล่าง */
-scroll-snap-type: x mandatory; /* ให้รูปหยุดตรงกลางพอดี */
--webkit-overflow-scrolling: touch; /* เลื่อนแบบลื่นใน iOS */
-cursor: grab; /* เปลี่ยนเมาส์เป็นรูปมือในคอม */
+padding: 5px 5px 15px 5px;
+scroll-snap-type: x mandatory;
+-webkit-overflow-scrolling: touch;
+cursor: grab;
 }
 
 .scroll-container:active {
 cursor: grabbing;
 }
 
-/* ซ่อน scrollbar ใน Chrome, Safari, Opera */
 .scroll-container::-webkit-scrollbar {
 height: 6px;
 }
@@ -150,7 +149,7 @@ background: transparent;
 }
 
 .scroll-item {
-flex: 0 0 85%; /* ขนาดรูปในมือถือ */
+flex: 0 0 85%;
 scroll-snap-align: center;
 border-radius: 15px;
 overflow: hidden;
@@ -167,7 +166,11 @@ flex: 0 0 70%;
 /* เมื่อเปิดในคอมพิวเตอร์ (จอใหญ่กว่า 768px) */
 @media (min-width: 768px) {
     .scroll-item {
-        flex: 0 0 60%; /* ปรับขนาดให้พอดีหน้าจอคอม */
+        flex: 0 0 60%;
+    }
+    /* EDIT: ปรับขนาดสไลด์ไอดีปล่อยเช่าในคอมให้รับกับทรง 1:1 */
+    .rent-scroll .scroll-item {
+        flex: 0 0 50%;
     }
 }
 
@@ -175,7 +178,13 @@ flex: 0 0 70%;
 width: 100%;
 display: block;
 object-fit: cover;
-pointer-events: none; /* กันการลากรูปภาพผิดพลาด */
+pointer-events: none;
+}
+
+/* EDIT: กำหนดขนาดรูปปล่อยเช่าเป็น 1:1 และให้เห็นจากหัวถึงกลางรูป */
+.rent-scroll .scroll-item img {
+    aspect-ratio: 1 / 1; /* กำหนดอัตราส่วน 1:1 */
+    object-position: top center; /* แสดงผลโดยเน้นส่วนบน (หัวรูป) ลงมา */
 }
 
 .footer{
@@ -218,11 +227,11 @@ border:1px solid var(--dark);
 <h1>Julylyn Shop</h1>
 
 <div style="color:var(--text-light); opacity:.9; margin:10px 0 20px; line-height: 1.6;">
-    <p>ยินดีต้อนรับสู่อาณาจักร 𓈒 น้องจูจู้  ݁ ♡</p>
-    <p>ในนี้จะรวมรายการทั้งหมดที่จูมีนะคะ</p>
-    <br>
-    <p>หากสนใจเช่าไอดีหรือเติมเกมสามารถแคป</p>
-    <p>ทักมาสอบถามจูได้เลยคะ</p>
+    <p>ยินดีต้อนรับสู่อาณาจักร 𓈒 น้องจูจู้  ݁ ♡</p>
+    <p>ในนี้จะรวมรายการทั้งหมดที่จูมีนะคะ</p>
+    <br>
+    <p>หากสนใจเช่าไอดีหรือเติมเกมสามารถแคป</p>
+    <p>ทักมาสอบถามจูได้เลยคะ</p>
 </div>
 
 <div class="badges">
@@ -239,50 +248,50 @@ border:1px solid var(--dark);
 
 <p class="center" style="font-size:15px; margin-bottom:10px; color: var(--text-light);">ปล่อยเช่าไอดีเกม Garena Rov</p>
 <div class="scroll-container rent-scroll">
-    <div class="scroll-item">
-        <img src="uploads/a3_40฿_ชั่วโมง.jpeg" alt="ROV ID 1"> 
-        <a href="https://drive.google.com/file/d/1a-LXFP5MU4FkVQpvpfgy_9FupQMkG4BZ/view?usp=drive_link" class="btn btn-main" style="margin: 10px; font-size: 13px;">40฿/ชม.</a>
-    </div>
-    <div class="scroll-item">
-        <img src="MB01.jpg" alt="ROV ID 2"> 
-        <a href="https://drive.google.com/drive/folders/1ZjXS5cOISqqID-lEsfuQnUmg2HBcSIvw?usp=drive_link" class="btn btn-main" style="margin: 10px; font-size: 13px;">รายละเอียด คลิก!</a>
-    </div>
-    <div class="scroll-item">
-        <img src="Modell02.jpg" alt="ROV ID 3"> 
-        <a href="https://drive.google.com/drive/folders/1MdLroYR82tFUWSHG-7DZL7KCEWd3WE7T?usp=drive_link" class="btn btn-main" style="margin: 10px; font-size: 13px;">รายละเอียด คลิก!</a>
-    </div>
+    <div class="scroll-item">
+        <img src="uploads/a3_40฿_ชั่วโมง.jpeg" alt="ROV ID 1"> 
+        <a href="https://drive.google.com/file/d/1a-LXFP5MU4FkVQpvpfgy_9FupQMkG4BZ/view?usp=drive_link" class="btn btn-main" style="margin: 10px; font-size: 13px;">40฿/ชม.</a>
+    </div>
+    <div class="scroll-item">
+        <img src="MB01.jpg" alt="ROV ID 2"> 
+        <a href="https://drive.google.com/drive/folders/1ZjXS5cOISqqID-lEsfuQnUmg2HBcSIvw?usp=drive_link" class="btn btn-main" style="margin: 10px; font-size: 13px;">รายละเอียด คลิก!</a>
+    </div>
+    <div class="scroll-item">
+        <img src="Modell02.jpg" alt="ROV ID 3"> 
+        <a href="https://drive.google.com/drive/folders/1MdLroYR82tFUWSHG-7DZL7KCEWd3WE7T?usp=drive_link" class="btn btn-main" style="margin: 10px; font-size: 13px;">รายละเอียด คลิก!</a>
+    </div>
 </div>
 
 <p class="center" style="font-size:15px; margin-top:5px; margin-bottom:10px; color: var(--text-light);">ปล่อยเช่าไอดีเกม Mobile Legend</p>
 <div class="scroll-container rent-scroll">
-    <div class="scroll-item">
-        <img src="A03.jpg" alt="MLBB ID 1"> 
-        <a href="https://drive.google.com/drive/folders/1m3TiC8jE77IgMdPnmn0JsfyQ75i5eWNK?usp=drive_link" class="btn btn-main" style="margin: 10px; font-size: 13px;">รายละเอียด คลิก!</a>
-    </div>
-    <div class="scroll-item">
-        <img src="MB01.jpg" alt="MLBB ID 2"> 
-        <a href="https://drive.google.com/drive/folders/1ZjXS5cOISqqID-lEsfuQnUmg2HBcSIvw?usp=drive_link" class="btn btn-main" style="margin: 10px; font-size: 13px;">รายละเอียด คลิก!</a>
-    </div>
-    <div class="scroll-item">
-        <img src="Modell02.jpg" alt="MLBB ID 3"> 
-        <a href="https://drive.google.com/drive/folders/1MdLroYR82tFUWSHG-7DZL7KCEWd3WE7T?usp=drive_link" class="btn btn-main" style="margin: 10px; font-size: 13px;">รายละเอียด คลิก!</a>
-    </div>
+    <div class="scroll-item">
+        <img src="A03.jpg" alt="MLBB ID 1"> 
+        <a href="https://drive.google.com/drive/folders/1m3TiC8jE77IgMdPnmn0JsfyQ75i5eWNK?usp=drive_link" class="btn btn-main" style="margin: 10px; font-size: 13px;">รายละเอียด คลิก!</a>
+    </div>
+    <div class="scroll-item">
+        <img src="MB01.jpg" alt="MLBB ID 2"> 
+        <a href="https://drive.google.com/drive/folders/1ZjXS5cOISqqID-lEsfuQnUmg2HBcSIvw?usp=drive_link" class="btn btn-main" style="margin: 10px; font-size: 13px;">รายละเอียด คลิก!</a>
+    </div>
+    <div class="scroll-item">
+        <img src="Modell02.jpg" alt="MLBB ID 3"> 
+        <a href="https://drive.google.com/drive/folders/1MdLroYR82tFUWSHG-7DZL7KCEWd3WE7T?usp=drive_link" class="btn btn-main" style="margin: 10px; font-size: 13px;">รายละเอียด คลิก!</a>
+    </div>
 </div>
 
 <p class="center" style="font-size:15px; margin-top:5px; margin-bottom:10px; color: var(--text-light);">ปล่อยเช่าไอดีเกม Honor of king</p>
 <div class="scroll-container rent-scroll">
-    <div class="scroll-item">
-        <img src="A03.jpg" alt="HOK ID 1"> 
-        <a href="https://drive.google.com/drive/folders/1m3TiC8jE77IgMdPnmn0JsfyQ75i5eWNK?usp=drive_link" class="btn btn-main" style="margin: 10px; font-size: 13px;">รายละเอียด คลิก!</a>
-    </div>
-    <div class="scroll-item">
-        <img src="MB01.jpg" alt="HOK ID 2"> 
-        <a href="https://drive.google.com/drive/folders/1ZjXS5cOISqqID-lEsfuQnUmg2HBcSIvw?usp=drive_link" class="btn btn-main" style="margin: 10px; font-size: 13px;">รายละเอียด คลิก!</a>
-    </div>
-    <div class="scroll-item">
-        <img src="Modell02.jpg" alt="HOK ID 3"> 
-        <a href="https://drive.google.com/drive/folders/1MdLroYR82tFUWSHG-7DZL7KCEWd3WE7T?usp=drive_link" class="btn btn-main" style="margin: 10px; font-size: 13px;">รายละเอียด คลิก!</a>
-    </div>
+    <div class="scroll-item">
+        <img src="A03.jpg" alt="HOK ID 1"> 
+        <a href="https://drive.google.com/drive/folders/1m3TiC8jE77IgMdPnmn0JsfyQ75i5eWNK?usp=drive_link" class="btn btn-main" style="margin: 10px; font-size: 13px;">รายละเอียด คลิก!</a>
+    </div>
+    <div class="scroll-item">
+        <img src="MB01.jpg" alt="HOK ID 2"> 
+        <a href="https://drive.google.com/drive/folders/1ZjXS5cOISqqID-lEsfuQnUmg2HBcSIvw?usp=drive_link" class="btn btn-main" style="margin: 10px; font-size: 13px;">รายละเอียด คลิก!</a>
+    </div>
+    <div class="scroll-item">
+        <img src="Modell02.jpg" alt="HOK ID 3"> 
+        <a href="https://drive.google.com/drive/folders/1MdLroYR82tFUWSHG-7DZL7KCEWd3WE7T?usp=drive_link" class="btn btn-main" style="margin: 10px; font-size: 13px;">รายละเอียด คลิก!</a>
+    </div>
 </div>
 
 <p class="center" style="font-size: 16px; color: var(--text-light); margin-top: 15px;">จองคิวเช่าไอดีจิ้มลิงค์ด้านล่าง</p>
@@ -293,16 +302,16 @@ border:1px solid var(--dark);
 <div class="section">
 <h2>TOPUP</h2>
 <div class="scroll-container">
-    <div class="scroll-item"><img src="topuprov.jpg" alt="เติมเกม ROV"></div>
-    <div class="scroll-item"><img src="topuphok.jpg" alt="เติมเกม HOK"></div>
-    <div class="scroll-item"><img src="topupmlbb.jpg" alt="เติมเกม MLBB"></div>
+    <div class="scroll-item"><img src="topuprov.jpg" alt="เติมเกม ROV"></div>
+    <div class="scroll-item"><img src="topuphok.jpg" alt="เติมเกม HOK"></div>
+    <div class="scroll-item"><img src="topupmlbb.jpg" alt="เติมเกม MLBB"></div>
 </div>
 <div class="price-row">
-    <p class="center" style="font-size: 16px; color: var(--text-light); margin-top: 10px;">บริการเติมเกม ROV,HOK,MLBB ราคาถูก</p>
-    <p style="font-size: 15px; color: var(--dark); margin-top: 10px; text-shadow: 0 0 3px rgba(244, 143, 177, 0.4);">* เช็ค uid และชื่อบัญชีก่อนโอนทุกครั้งค่ะ</p>
-    <p style="font-size: 15px; color: var(--dark); margin-top: 10px; text-shadow: 0 0 3px rgba(244, 143, 177, 0.4);">* หากข้อมูลผิดทางร้านไม่รับผิดชอบค่ะ</p>
-    <p style="font-size: 15px; color: var(--dark); margin-top: 10px; text-shadow: 0 0 3px rgba(244, 143, 177, 0.4);">* โอนเงินแล้วทางร้านไม่คืนเงินทุกกรณีนะคะ</p> 
-    <a href="https://drive.google.com/drive/folders/1ueXM-5H6m5XL9K662SYe71ZOZEhfAkvD?usp=drive_link" class="btn btn-main">ดูรูปเต็มๆ จิ้มม🤏🏻</a>
+    <p class="center" style="font-size: 16px; color: var(--text-light); margin-top: 10px;">บริการเติมเกม ROV,HOK,MLBB ราคาถูก</p>
+    <p style="font-size: 15px; color: var(--dark); margin-top: 10px; text-shadow: 0 0 3px rgba(244, 143, 177, 0.4);">* เช็ค uid และชื่อบัญชีก่อนโอนทุกครั้งค่ะ</p>
+    <p style="font-size: 15px; color: var(--dark); margin-top: 10px; text-shadow: 0 0 3px rgba(244, 143, 177, 0.4);">* หากข้อมูลผิดทางร้านไม่รับผิดชอบค่ะ</p>
+    <p style="font-size: 15px; color: var(--dark); margin-top: 10px; text-shadow: 0 0 3px rgba(244, 143, 177, 0.4);">* โอนเงินแล้วทางร้านไม่คืนเงินทุกกรณีนะคะ</p> 
+    <a href="https://drive.google.com/drive/folders/1ueXM-5H6m5XL9K662SYe71ZOZEhfAkvD?usp=drive_link" class="btn btn-main">ดูรูปเต็มๆ จิ้มม🤏🏻</a>
 </div>
 
 <div class="footer">
