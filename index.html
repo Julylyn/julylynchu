@@ -155,12 +155,17 @@ border-radius: 15px;
 overflow: hidden;
 background: #fff;
 border: 1px solid #eee;
+padding-bottom: 5px;
 box-shadow: 0 4px 10px rgba(0,0,0,0.05);
 }
 
-/* ปรับขนาดเฉพาะรูปไอดีปล่อยเช่าให้เล็กลงเล็กน้อยตามสั่งเดิม */
+/* EDIT: ปรับกรอบรูปปล่อยเช่า (1:1) ให้พอดีสวยงาม */
 .rent-scroll .scroll-item {
 flex: 0 0 70%; 
+border: none; /* ลบเส้นขอบออก */
+padding-bottom: 0; /* ลบช่องว่างด้านล่าง */
+background: transparent; /* ให้พื้นหลังใส */
+box-shadow: 0 8px 20px rgba(0,0,0,0.1); /* เพิ่มเงาให้ดูมีมิติแทน */
 }
 
 /* เมื่อเปิดในคอมพิวเตอร์ (จอใหญ่กว่า 768px) */
@@ -168,7 +173,6 @@ flex: 0 0 70%;
     .scroll-item {
         flex: 0 0 60%;
     }
-    /* EDIT: ปรับขนาดสไลด์ไอดีปล่อยเช่าในคอมให้รับกับทรง 1:1 */
     .rent-scroll .scroll-item {
         flex: 0 0 50%;
     }
@@ -181,10 +185,11 @@ object-fit: cover;
 pointer-events: none;
 }
 
-/* EDIT: กำหนดขนาดรูปปล่อยเช่าเป็น 1:1 และให้เห็นจากหัวถึงกลางรูป */
+/* กำหนดขนาดรูปปล่อยเช่าเป็น 1:1 และให้เห็นจากหัวถึงกลางรูป */
 .rent-scroll .scroll-item img {
-    aspect-ratio: 1 / 1; /* กำหนดอัตราส่วน 1:1 */
-    object-position: top center; /* แสดงผลโดยเน้นส่วนบน (หัวรูป) ลงมา */
+    aspect-ratio: 1 / 1;
+    object-position: top center;
+    border-radius: 15px; /* ใส่ความโค้งที่ตัวรูปภาพโดยตรง */
 }
 
 .footer{
