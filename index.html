@@ -9,12 +9,13 @@
 
 <style>
 :root{
-/* ปรับโทนสีเป็น ชมพู-ฟ้า ตามบรีฟ */
---bg:#000033; 
---main:#FFFF00;
---dark:#FF9900;
---white:#000066;
---glow:rgba(246,165,201,0.4);
+/* EDIT: เปลี่ยนโทนสีใหม่ น้ำเงินเข้ม-เหลืองทอง-ส้ม */
+--bg: #000033;       /* สีน้ำเงินเข้มมาก (ท้องฟ้ากลางคืน) */
+--white: #001144;    /* สีน้ำเงินเข้ม (พื้นหลัง Section) */
+--main: #FFCC00;     /* สีเหลืองทอง (ปุ่มหลัก, ขอบ, ตัวเลข) */
+--dark: #FF9933;     /* สีส้มทอง (หัวข้อ, ข้อความเน้น) */
+--text-light: #CCDDFF; /* สีฟ้าอ่อนมากๆ (ข้อความทั่วไปเพื่อให้เห็นชัดบนพื้นเข้ม) */
+--glow: rgba(255, 204, 0, 0.3); /* แสงเรืองรองสีทอง */
 }
 
 *{margin:0;padding:0;box-sizing:border-box;font-family:'Mitr',sans-serif;}
@@ -23,6 +24,8 @@ body{
 background:var(--bg);
 display:flex;
 justify-content:center;
+/* EDIT: เพิ่มสีข้อความพื้นฐาน */
+color: var(--text-light);
 }
 
 .container{
@@ -36,11 +39,11 @@ background:var(--white);
 border-radius:20px;
 padding:25px 20px;
 margin-bottom:20px;
-box-shadow:0 8px 20px rgba(0,0,0,0.05);
+box-shadow:0 8px 20px rgba(0,0,0,0.2); /* ปรับเงาให้เข้ากับโทนเข้ม */
 border:2px solid var(--main);
 }
 
-h1,h2,h3{color:var(--dark);}
+h1,h2,h3{color:var(--dark);} /* หัวข้อสีส้มทอง */
 .center{text-align:center;}
 
 .logo{
@@ -48,7 +51,9 @@ width:150px;height:150px;
 border-radius:50%;
 overflow:hidden;
 margin:0 auto 20px;
-box-shadow:0 6px 20px var(--glow);
+box-shadow:0 6px 20px var(--glow); /* แสงเรืองสีทอง */
+/* EDIT: เพิ่มขอบโลโก้ */
+border: 3px solid var(--main);
 }
 
 .logo img{width:100%;height:100%;object-fit:cover;}
@@ -62,12 +67,14 @@ margin-bottom:20px;
 }
 
 .badge{
-background:#fff;
+/* EDIT: เปลี่ยนสี Badge */
+background: #002266; /* น้ำเงินที่สว่างกว่าพื้นหลังนิดหน่อย */
 padding:8px 16px;
 border-radius:25px;
-box-shadow:0 4px 10px var(--glow);
+box-shadow:0 4px 10px rgba(0,0,0,0.3);
 font-size:13px;
-color:var(--dark);
+color:var(--main); /* ตัวอักษรสีเหลืองทอง */
+border: 1px solid var(--main);
 }
 
 .btn{
@@ -78,17 +85,30 @@ border-radius:25px;
 text-decoration:none;
 margin-top:15px;
 font-weight:500;
+transition: all 0.3s ease;
+}
+
+.btn:hover {
+transform: translateY(-2px);
+box-shadow: 0 5px 15px var(--glow);
 }
 
 .btn-outline{
-background:#fff;
+/* EDIT: เปลี่ยนสีปุ่มเส้นประ */
+background:transparent;
 border:2px dashed var(--main);
-color:var(--dark);
+color:var(--main);
 }
 
 .btn-main{
+/* EDIT: เปลี่ยนสีปุ่มหลัก */
 background:var(--main);
-color:#fff;
+color:#000033; /* ตัวอักษรสีเข้มบนปุ่มสว่าง */
+box-shadow: 0 4px 10px var(--glow);
+}
+
+.btn-main:hover {
+background: #FFDD33; /* สว่างขึ้นเมื่อ Hover */
 }
 
 .step{
@@ -96,34 +116,46 @@ display:flex;
 align-items:center;
 gap:12px;
 margin-bottom:12px;
+/* EDIT: สีข้อความใน Step */
+color: var(--text-light);
+}
+
+.step a {
+color: var(--main); /* สีลิงก์ใน step */
 }
 
 .step-num{
 background:var(--main);
-color:#fff;
+color:#000033; /* ตัวเลขสีเข้มบนวงกลมสว่าง */
 width:26px;height:26px;
 border-radius:50%;
 display:flex;
 align-items:center;
 justify-content:center;
 font-size:13px;
+font-weight: bold;
 }
 
 .price-row{
 display:flex;
 justify-content:space-between;
+align-items: center;
 margin-bottom:10px;
-background:#fffcfd;
+/* EDIT: สีพื้นหลังแถวราคา */
+background:#001A55;
 padding:10px 15px;
 border-radius:15px;
+border: 1px solid #002266;
+color: var(--text-light);
 }
 
 .price-tag{
-background:var(--main);
-color:#fff;
+background:var(--dark); /* แท็กราคาสีส้มทอง */
+color:#000033;
 padding:3px 12px;
 border-radius:20px;
 font-size:14px;
+font-weight: 500;
 }
 
 /* CSS สำหรับเลื่อนแนวนอน */
@@ -132,8 +164,10 @@ display: flex;
 overflow-x: auto;
 gap: 10px;
 scroll-snap-type: x mandatory;
-padding-bottom: 10px;
+padding-bottom: 15px; /* เพิ่มพื้นที่ด้านล่าง */
 -webkit-overflow-scrolling: touch;
+scrollbar-width: thin; /* สำหรับ Firefox */
+scrollbar-color: var(--main) var(--white); /* สำหรับ Firefox */
 }
 
 .scroll-item {
@@ -141,9 +175,10 @@ flex: 0 0 85%;
 scroll-snap-align: start;
 border-radius: 15px;
 overflow: hidden;
-border: 1px solid #eee;
+border: 2px solid #002266; /* ขอบเข้มขึ้น */
 display: flex;
 flex-direction: column;
+background: #001A55;
 }
 
 .scroll-item img {
@@ -151,9 +186,13 @@ width: 100%;
 display: block;
 }
 
-/* ซ่อน scrollbar สำหรับความสวยงาม */
+/* ปรับปรุง Scrollbar */
 .scroll-container::-webkit-scrollbar {
-height: 4px;
+height: 6px;
+}
+.scroll-container::-webkit-scrollbar-track {
+background: var(--white);
+border-radius: 10px;
 }
 .scroll-container::-webkit-scrollbar-thumb {
 background: var(--main);
@@ -163,6 +202,7 @@ border-radius: 10px;
 .footer{
 text-align:center;
 margin-top:30px;
+color: var(--text-light);
 }
 
 .socials{
@@ -176,16 +216,23 @@ margin-top:15px;
 flex:1;
 max-width:100px;
 text-align:center;
-padding:8px;
+padding:10px;
 border-radius:25px;
-background:#fff;
+/* EDIT: สีปุ่ม Social */
+background:#002266;
 text-decoration:none;
-color:var(--dark);
+color:var(--main);
 font-size:13px;
-border:1px solid #ffeef5;
+border:1px solid var(--main);
+transition: all 0.3s ease;
 }
 
-.small{font-size:12px;opacity:.7;margin-top:10px;}
+.socials a:hover {
+background: var(--main);
+color: #000033;
+}
+
+.small{font-size:12px;opacity:.7;margin-top:10px; color: var(--text-light);}
 </style>
 </head>
 
@@ -198,7 +245,7 @@ border:1px solid #ffeef5;
 </div>
 <h1>Julylyn Shop</h1>
 
-<div style="color:var(--dark); opacity:.8; margin:10px 0 20px; line-height: 1.6;">
+<div style="color:var(--text-light); opacity:.8; margin:10px 0 20px; line-height: 1.6;">
     <p>ยินดีต้อนรับสู่อาณาจักร 𓈒 น้องจูจู้  ݁ ♡</p>
     <p>ในนี้จะรวมรายการทั้งหมดที่จูมีนะคะ</p>
     <br>
@@ -217,7 +264,7 @@ border:1px solid #ffeef5;
 
 <div class="section">
 <h2 class="center">รวมไอดีปล่อยเช่า</h2>
-<p class="center" style="font-size:14px; margin-bottom:15px;">ปล่อยเช่าไอดีเกม Garena Rov</p>
+<p class="center" style="font-size:14px; margin-bottom:15px; color: var(--text-light);">ปล่อยเช่าไอดีเกม Garena Rov</p>
 
 <div class="scroll-container">
     <div class="scroll-item">
@@ -231,7 +278,7 @@ border:1px solid #ffeef5;
     </div>
 </div>
 
-<p class="center" style="font-size: 16px; color: #000000; margin-top: 15px;">จองคิวเช่าไอดีจิ้มลิงค์ด้านล่าง</p>
+<p class="center" style="font-size: 16px; color: var(--text-light); margin-top: 15px;">จองคิวเช่าไอดีจิ้มลิงค์ด้านล่าง</p>
 
 <a href="https://lin.ee/o1GvNgZ" class="btn btn-main">Line AO</a>
 <a href="https://www.facebook.com/share/1K1REDAqkB/?mibextid=wwXIfr" class="btn btn-main">Facebook</a>
@@ -252,10 +299,11 @@ border:1px solid #ffeef5;
     </div>
 </div>
 
-<div class="price-row"><span>บริการเติมเกม ROV,HOK,MLBB ราคาถูก</span>
+<div class="price-row">
+    <span>บริการเติมเกม ROV,HOK,MLBB ราคาถูก</span>
+    <span class="price-tag">ราคาถูก</span> </div>
 
-<p style="font-size: 16px; color: #ff6b6b; margin-top: 10px;">* โอนเงินแล้วทางร้านไม่คืนเงินทุกกรณีนะคะ</p>
-<a href="https://drive.google.com/drive/folders/1ueXM-5H6m5XL9K662SYe71ZOZEhfAkvD?usp=drive_link" class="btn btn-main">ดูรูปเต็มๆ จิ้มม🤏🏻</a>
+<p style="font-size: 16px; color: #ffbb33; margin-top: 10px;">* โอนเงินแล้วทางร้านไม่คืนเงินทุกกรณีนะคะ</p> <a href="https://drive.google.com/drive/folders/1ueXM-5H6m5XL9K662SYe71ZOZEhfAkvD?usp=drive_link" class="btn btn-main">ดูรูปเต็มๆ จิ้มม🤏🏻</a>
 </div>
 
 <div class="footer">
