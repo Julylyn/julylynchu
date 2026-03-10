@@ -28,17 +28,17 @@ position: relative;
 overflow-x: hidden;
 }
 
-/* --- พื้นหลังดาวลอยลงมา (Snowfall Effect) --- */
+/* --- พื้นหลังดาวลอยลงมา (ลดจำนวนดาวลง) --- */
 body::before {
 content: "";
 position: fixed;
 top: -10vh; left: 0; width: 100%; height: 110vh;
 z-index: -1;
-/* ลายอิโมจิ ⭐ แบบ SVG กระจายตัว */
+/* ปรับ SVG ให้มีดาวเพียง 2 ดวงต่อบล็อก เพื่อความสะอาดตา */
 background-image: 
-    url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='150' height='150' viewBox='0 0 100 100'%3E%3Ctext y='20' x='10' font-size='8' opacity='0.5'%3E%E2%AD%90%3C/text%3E%3Ctext y='50' x='70' font-size='10' opacity='0.3'%3E%E2%AD%90%3C/text%3E%3Ctext y='80' x='30' font-size='6' opacity='0.4'%3E%E2%AD%90%3C/text%3E%3Ctext y='10' x='90' font-size='9' opacity='0.2'%3E%E2%AD%90%3C/text%3E%3C/svg%3E");
-background-size: 150px 150px;
-animation: snowfall 40s linear infinite; /* ตกช้าๆ */
+    url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='200' height='200' viewBox='0 0 100 100'%3E%3Ctext y='30' x='20' font-size='8' opacity='0.3'%3E%E2%AD%90%3C/text%3E%3Ctext y='70' x='80' font-size='6' opacity='0.2'%3E%E2%AD%90%3C/text%3E%3C/svg%3E");
+background-size: 200px 200px;
+animation: snowfall 45s linear infinite; 
 }
 
 @keyframes snowfall {
@@ -53,18 +53,17 @@ padding:20px 15px 40px;
 position: relative; z-index: 1;
 }
 
-/* ปรับกรอบให้เรืองแสงฟุ้งๆ */
+/* ปรับกรอบให้คมชัด (ลบ Blur ออก) */
 .section{
-background:rgba(255, 255, 255, 0.9);
+background: rgba(255, 255, 255, 0.95); /* เพิ่มความทึบขึ้นเล็กน้อยเพื่อให้ตัวหนังสือชัดเจน */
 border-radius:24px;
 padding:25px 20px;
 margin-bottom:20px;
-box-shadow: 0 10px 25px rgba(212, 153, 224, 0.15), 
-            0 4px 10px rgba(0, 0, 0, 0.02);
-border: 1.5px solid rgba(212, 153, 224, 0.3);
+box-shadow: 0 10px 25px rgba(212, 153, 224, 0.12);
+border: 1.5px solid rgba(212, 153, 224, 0.25);
 position: relative;
 overflow: hidden;
-backdrop-filter: blur(3px);
+/* backdrop-filter ลบออกแล้วตามสั่ง */
 }
 
 h1{ color:var(--dark); font-weight: 500; font-size: 28px; text-shadow: 2px 2px 4px var(--glow); }
@@ -76,7 +75,7 @@ width:150px;height:150px;
 border-radius:50%;
 overflow:hidden;
 margin:0 auto 20px;
-box-shadow: 0 0 20px var(--glow), 0 0 40px rgba(212, 153, 224, 0.2);
+box-shadow: 0 0 20px var(--glow);
 border: 4px solid #fff;
 }
 
@@ -113,10 +112,10 @@ transition: all 0.3s ease;
 }
 
 .btn-outline{
-background: rgba(255, 255, 255, 0.8);
+background: #fff;
 border: 2px dashed var(--main);
 color: var(--dark);
-box-shadow: 0 4px 15px rgba(212, 153, 224, 0.2);
+box-shadow: 0 4px 15px rgba(212, 153, 224, 0.1);
 }
 
 .btn-main{
@@ -125,7 +124,7 @@ color:#fff;
 box-shadow: 0 6px 20px var(--glow);
 }
 
-.btn:hover{ transform: translateY(-2px); box-shadow: 0 8px 25px var(--glow); }
+.btn:hover{ transform: translateY(-2px); }
 
 .step{
 display:flex;
@@ -143,7 +142,6 @@ display:flex;
 align-items:center;
 justify-content:center;
 font-size:13px;
-box-shadow: 0 2px 8px var(--glow);
 }
 
 .scroll-container {
@@ -164,7 +162,6 @@ border-radius: 18px;
 overflow: hidden;
 scroll-snap-align: center;
 border: 1px solid var(--soft-purple);
-box-shadow: 0 4px 12px rgba(0,0,0,0.03);
 }
 .product-card img { width: 100%; height: 100%; object-fit: cover; }
 
@@ -191,7 +188,6 @@ text-decoration:none;
 color:var(--dark);
 font-size:14px;
 border: 1px solid var(--soft-purple);
-box-shadow: 0 4px 10px rgba(0,0,0,0.03);
 transition: 0.3s;
 }
 
@@ -213,7 +209,7 @@ transition: 0.3s;
 𓂂◟✿ จูรับเติมเกม𓈒ปล่อยเช่า𓈒ดันขาย𓈒จำหน่ายแอพพรี 💌
 สนใจรายการไหนสามารถแคปไปแจ้งจูได้เลยน้า 💖
 
- ྀི︶˚̣̣̣⠀⠀⠀(⁠ᗒ⩊ᗕ ྀི)⠀⠀⠀˚̣̣̣︶ ྀ
+ ྀི︶˚̣̣̣⠀⠀⠀(⁠ᗒ⩊ᗕ ྀི)⠀⠀⠀˚̣̣̣︶ ྀ
 </div>
 
 <div class="badges">
