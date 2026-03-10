@@ -9,12 +9,13 @@
 
 <style>
 :root{
-/* ปรับโทนสีเป็น ม่วง-ชมพู */
---bg:#F3E5F5; 
---main:#CE93D8;
---dark:#8E24AA;
+/* ปรับโทนสีเป็น ม่วง-ชมพู แบบพาสเทลเรืองแสง */
+--bg:#F8F0FB; 
+--main:#D499E0;
+--dark:#7B1FA2;
 --white:#FFFFFF;
---glow:rgba(206, 147, 216, 0.4);
+--glow:rgba(212, 153, 224, 0.5);
+--soft-purple: #F3E5F5;
 }
 
 *{margin:0;padding:0;box-sizing:border-box;font-family:'Mitr',sans-serif;}
@@ -23,6 +24,8 @@ body{
 background:var(--bg);
 display:flex;
 justify-content:center;
+background-image: radial-gradient(var(--soft-purple) 1px, transparent 1px);
+background-size: 20px 20px; /* เพิ่มลายจุดจางๆ ให้ดูน่ารัก */
 }
 
 .container{
@@ -31,16 +34,21 @@ width:100%;
 padding:20px 15px 40px;
 }
 
+/* ปรับกรอบให้เรืองแสงฟุ้งๆ */
 .section{
 background:var(--white);
-border-radius:20px;
+border-radius:24px;
 padding:25px 20px;
 margin-bottom:20px;
-box-shadow:0 8px 20px rgba(0,0,0,0.05);
-border:2px solid var(--main);
+box-shadow: 0 10px 25px rgba(212, 153, 224, 0.15), 
+            0 4px 10px rgba(0, 0, 0, 0.02);
+border: 1.5px solid rgba(212, 153, 224, 0.3);
+position: relative;
+overflow: hidden;
 }
 
-h1,h2,h3{color:var(--dark); margin-bottom: 15px;}
+h1{ color:var(--dark); font-weight: 500; font-size: 28px; text-shadow: 2px 2px 4px var(--glow); }
+h2{ color:var(--dark); font-size: 18px; font-weight: 500; display: flex; align-items: center; gap: 8px; }
 .center{text-align:center;}
 
 .logo{
@@ -48,7 +56,8 @@ width:150px;height:150px;
 border-radius:50%;
 overflow:hidden;
 margin:0 auto 20px;
-box-shadow:0 6px 20px var(--glow);
+box-shadow: 0 0 20px var(--glow), 0 0 40px rgba(212, 153, 224, 0.2);
+border: 4px solid #fff;
 }
 
 .logo img{width:100%;height:100%;object-fit:cover;}
@@ -57,40 +66,47 @@ box-shadow:0 6px 20px var(--glow);
 display:flex;
 flex-wrap:wrap;
 justify-content:center;
-gap:10px;
+gap:8px;
 margin-bottom:20px;
 }
 
 .badge{
 background:#fff;
-padding:8px 16px;
-border-radius:25px;
-box-shadow:0 4px 10px var(--glow);
+padding:6px 14px;
+border-radius:20px;
+box-shadow: 0 4px 12px var(--glow);
 font-size:13px;
 color:var(--dark);
+border: 1px solid var(--soft-purple);
+font-weight: 400;
 }
 
 .btn{
 display:block;
 text-align:center;
 padding:14px;
-border-radius:25px;
+border-radius:30px;
 text-decoration:none;
 margin-top:15px;
 font-weight:500;
-transition: 0.3s;
+transition: all 0.3s ease;
 }
 
+/* ปุ่มเส้นประแบบเรืองแสง */
 .btn-outline{
-background:#fff;
-border:2px dashed var(--main);
-color:var(--dark);
+background: rgba(255, 255, 255, 0.8);
+border: 2px dashed var(--main);
+color: var(--dark);
+box-shadow: 0 4px 15px rgba(212, 153, 224, 0.2);
 }
 
 .btn-main{
-background:var(--main);
+background: linear-gradient(135deg, var(--main), #B388FF);
 color:#fff;
+box-shadow: 0 6px 20px var(--glow);
 }
+
+.btn:hover{ transform: translateY(-2px); box-shadow: 0 8px 25px var(--glow); }
 
 .step{
 display:flex;
@@ -100,7 +116,7 @@ margin-bottom:12px;
 }
 
 .step-num{
-background:var(--main);
+background: var(--main);
 color:#fff;
 width:26px;height:26px;
 border-radius:50%;
@@ -108,46 +124,30 @@ display:flex;
 align-items:center;
 justify-content:center;
 font-size:13px;
+box-shadow: 0 2px 8px var(--glow);
 }
 
-/* สไตล์เพิ่มเติมสำหรับรูปเลื่อนแนวนอน */
 .scroll-container {
 display: flex;
 overflow-x: auto;
 gap: 15px;
-padding: 10px 0;
+padding: 10px 5px;
 scroll-snap-type: x mandatory;
-scrollbar-width: none; /* ซ่อน scrollbar สำหรับ Firefox */
+scrollbar-width: none;
 }
-.scroll-container::-webkit-scrollbar { display: none; } /* ซ่อน scrollbar สำหรับ Chrome */
+.scroll-container::-webkit-scrollbar { display: none; }
 
 .product-card {
-flex: 0 0 80%; /* ขนาดรูป 1:1 แบบเห็นใบถัดไปนิดหน่อย */
+flex: 0 0 80%;
 aspect-ratio: 1/1;
-background: #eee;
-border-radius: 15px;
+background: #fdfbff;
+border-radius: 18px;
 overflow: hidden;
 scroll-snap-align: center;
-border: 1px solid #eee;
+border: 1px solid var(--soft-purple);
+box-shadow: 0 4px 12px rgba(0,0,0,0.03);
 }
 .product-card img { width: 100%; height: 100%; object-fit: cover; }
-
-.price-row{
-display:flex;
-justify-content:space-between;
-margin-bottom:10px;
-background:#fffcfd;
-padding:10px 15px;
-border-radius:15px;
-}
-
-.price-tag{
-background:var(--main);
-color:#fff;
-padding:3px 12px;
-border-radius:20px;
-font-size:14px;
-}
 
 .footer{
 text-align:center;
@@ -156,7 +156,7 @@ margin-top:30px;
 
 .socials{
 display:flex;
-gap:8px;
+gap:10px;
 justify-content:center;
 margin-top:15px;
 }
@@ -165,16 +165,19 @@ margin-top:15px;
 flex:1;
 max-width:150px;
 text-align:center;
-padding:10px;
+padding:12px;
 border-radius:25px;
 background:#fff;
 text-decoration:none;
 color:var(--dark);
-font-size:13px;
-border:1px solid var(--main);
+font-size:14px;
+border: 1px solid var(--soft-purple);
+box-shadow: 0 4px 10px rgba(0,0,0,0.03);
+transition: 0.3s;
 }
 
-.small{font-size:12px;opacity:.7;margin-top:10px;}
+.socials a:hover{ background: var(--soft-purple); }
+.small{font-size:12px;opacity:.6;margin-top:15px; letter-spacing: 1px;}
 </style>
 </head>
 <body>
@@ -186,7 +189,7 @@ border:1px solid var(--main);
 </div>
 
 <h1>Julylynchu</h1>
-<div style="color:var(--dark);opacity:.8;margin:10px 0 20px; white-space: pre-line;">
+<div style="color:var(--dark);opacity:.9;margin:15px 0 25px; white-space: pre-line; line-height: 1.6;">
 🥣 ⌇𝚆𝚎𝚕𝚌𝚘𝚖𝚎 𝚝𝚘 𝚖𝚢 𝚜𝚑𝚘𝚙
 𓂂◟✿ จูรับเติมเกม𓈒ปล่อยเช่า𓈒ดันขาย𓈒จำหน่ายแอพพรี 💌
 สนใจรายการไหนสามารถแคปไปแจ้งจูได้เลยน้า 💖
@@ -205,20 +208,25 @@ border:1px solid var(--main);
 Open-Close 09:00-00:00 ✨
 </a>
 </div>
+
 <div class="section">
 <h2>🎮 ปล่อยเช่ารหัส (ROV / MLBB / HOK)</h2>
 
-<p style="margin-bottom:10px; font-size:14px; color:var(--dark);">• ROV</p>
+<p style="margin: 10px 0 5px; font-size:14px; color:var(--dark); font-weight: 500;">• ROV</p>
 <div class="scroll-container">
     <div class="product-card"><img src="rov1.jpg" alt="ID1"></div>
     <div class="product-card"><img src="mlbb1.jpg" alt="ID2"></div>
     <div class="product-card"><img src="hok1.jpg" alt="ID3"></div>
-<p style="margin-bottom:10px; font-size:14px; color:var(--dark);">•MLBB</p>
+</div>
+
+<p style="margin: 10px 0 5px; font-size:14px; color:var(--dark); font-weight: 500;">• MLBB</p>
 <div class="scroll-container">
     <div class="product-card"><img src="rov1.jpg" alt="ID1"></div>
     <div class="product-card"><img src="mlbb1.jpg" alt="ID2"></div>
     <div class="product-card"><img src="hok1.jpg" alt="ID3"></div>
-<p style="margin-bottom:10px; font-size:14px; color:var(--dark);">•HOK</p>
+</div>
+
+<p style="margin: 10px 0 5px; font-size:14px; color:var(--dark); font-weight: 500;">• HOK</p>
 <div class="scroll-container">
     <div class="product-card"><img src="rov1.jpg" alt="ROV"></div>
     <div class="product-card"><img src="mlbb1.jpg" alt="MLBB"></div>
@@ -230,7 +238,7 @@ Open-Close 09:00-00:00 ✨
 
 <div class="section">
 <h2>📋 ขั้นตอนการยืนยันตัวตน</h2>
-<p style="margin-bottom:10px; font-size:14px; color:var(--dark);">ก่อนเช่าไอดี โปรดอ่านรายละเอียด</p>
+<p style="margin-bottom:10px; font-size:14px; color:var(--dark); opacity: 0.8;">ก่อนเช่าไอดี โปรดอ่านรายละเอียด</p>
 <div class="scroll-container">
     <div class="product-card"><img src="step1.jpg" alt="Step 1"></div>
     <div class="product-card"><img src="step2.jpg" alt="Step 2"></div>
@@ -246,15 +254,15 @@ Open-Close 09:00-00:00 ✨
 <a href="#" class="btn btn-main">ดูรูปเต็มๆ คลิก !</a>
 </div>
 
-<div class="section" style="background: #FFF9FA;">
-<h2 class="center">📍 กฎของร้าน 📍</h2>
-<div class="step"><div class="step-num">•</div><div>ถ้าโอนเงินแล้วทางร้านไม่คืนเงินทุกกรณีนะคะ</div></div>
-<div class="step"><div class="step-num">•</div><div>จอง = โอน หากยกเลิกภายหลังไม่มีการคืนเงินใดๆทั้งสิ้นค่ะ</div></div>
+<div class="section" style="background: linear-gradient(to bottom, #fff, #FFF9FA); border-color: #FFCDD2;">
+<h2 class="center" style="color: #D32F2F; margin-bottom: 20px;">📍 กฎของร้าน 📍</h2>
+<div class="step"><div class="step-num" style="background:#EF5350;">•</div><div style="font-weight: 500;">ถ้าโอนเงินแล้วทางร้านไม่คืนเงินทุกกรณีนะคะ</div></div>
+<div class="step"><div class="step-num" style="background:#EF5350;">•</div><div style="font-weight: 500;">จอง = โอน หากยกเลิกภายหลังไม่มีคืนเงินใดๆ</div></div>
 </div>
 
 <div class="section">
 <h2>📱 จำหน่ายแอพพรีเมี่ยม</h2>
-<p style="margin-bottom:10px; font-size:14px; color:var(--dark);">แอพพรีเมี่ยมราคาถูก</p>
+<p style="margin-bottom:10px; font-size:14px; color:var(--dark); opacity: 0.8;">แอพพรีเมี่ยมราคาถูก</p>
 <div class="scroll-container">
     <div class="product-card"><img src="app1.jpg" alt="App 1"></div>
     <div class="product-card"><img src="app2.jpg" alt="App 2"></div>
@@ -270,7 +278,7 @@ Open-Close 09:00-00:00 ✨
 </div>
 
 <p class="small">
-© 2026 Julylynchu Store
+© 2026 Julylynchu Store • All Rights Reserved
 </p>
 </div>
 
