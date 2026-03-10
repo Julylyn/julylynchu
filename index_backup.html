@@ -24,19 +24,38 @@ body{
 background:var(--bg);
 display:flex;
 justify-content:center;
-background-image: radial-gradient(var(--soft-purple) 1px, transparent 1px);
-background-size: 20px 20px; /* เพิ่มลายจุดจางๆ ให้ดูน่ารัก */
+position: relative;
+overflow-x: hidden;
+}
+
+/* --- พื้นหลังดาวลอยลงมา (Snowfall Effect) --- */
+body::before {
+content: "";
+position: fixed;
+top: -10vh; left: 0; width: 100%; height: 110vh;
+z-index: -1;
+/* ลายอิโมจิ ⭐ แบบ SVG กระจายตัว */
+background-image: 
+    url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='150' height='150' viewBox='0 0 100 100'%3E%3Ctext y='20' x='10' font-size='8' opacity='0.5'%3E%E2%AD%90%3C/text%3E%3Ctext y='50' x='70' font-size='10' opacity='0.3'%3E%E2%AD%90%3C/text%3E%3Ctext y='80' x='30' font-size='6' opacity='0.4'%3E%E2%AD%90%3C/text%3E%3Ctext y='10' x='90' font-size='9' opacity='0.2'%3E%E2%AD%90%3C/text%3E%3C/svg%3E");
+background-size: 150px 150px;
+animation: snowfall 40s linear infinite; /* ตกช้าๆ */
+}
+
+@keyframes snowfall {
+from { background-position: 0 0; }
+to { background-position: 0 110vh; }
 }
 
 .container{
 max-width:500px;
 width:100%;
 padding:20px 15px 40px;
+position: relative; z-index: 1;
 }
 
 /* ปรับกรอบให้เรืองแสงฟุ้งๆ */
 .section{
-background:var(--white);
+background:rgba(255, 255, 255, 0.9);
 border-radius:24px;
 padding:25px 20px;
 margin-bottom:20px;
@@ -45,6 +64,7 @@ box-shadow: 0 10px 25px rgba(212, 153, 224, 0.15),
 border: 1.5px solid rgba(212, 153, 224, 0.3);
 position: relative;
 overflow: hidden;
+backdrop-filter: blur(3px);
 }
 
 h1{ color:var(--dark); font-weight: 500; font-size: 28px; text-shadow: 2px 2px 4px var(--glow); }
@@ -92,7 +112,6 @@ font-weight:500;
 transition: all 0.3s ease;
 }
 
-/* ปุ่มเส้นประแบบเรืองแสง */
 .btn-outline{
 background: rgba(255, 255, 255, 0.8);
 border: 2px dashed var(--main);
@@ -194,7 +213,7 @@ transition: 0.3s;
 𓂂◟✿ จูรับเติมเกม𓈒ปล่อยเช่า𓈒ดันขาย𓈒จำหน่ายแอพพรี 💌
 สนใจรายการไหนสามารถแคปไปแจ้งจูได้เลยน้า 💖
 
- ྀི︶˚̣̣̣⠀⠀⠀(⁠ᗒ⩊ᗕ ྀི)⠀⠀⠀˚̣̣̣︶ ྀ
+ ྀི︶˚̣̣̣⠀⠀⠀(⁠ᗒ⩊ᗕ ྀི)⠀⠀⠀˚̣̣̣︶ ྀ
 </div>
 
 <div class="badges">
