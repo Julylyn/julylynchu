@@ -1,0 +1,271 @@
+<!DOCTYPE html>
+<html lang="th">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Julylynchu - Official Store</title>
+
+<link href="https://fonts.googleapis.com/css2?family=Mitr:wght@300;400;500&display=swap" rel="stylesheet">
+
+<style>
+:root{
+/* ปรับโทนสีเป็น ม่วง-ชมพู */
+--bg:#F3E5F5; 
+--main:#CE93D8;
+--dark:#8E24AA;
+--white:#FFFFFF;
+--glow:rgba(206, 147, 216, 0.4);
+}
+
+*{margin:0;padding:0;box-sizing:border-box;font-family:'Mitr',sans-serif;}
+
+body{
+background:var(--bg);
+display:flex;
+justify-content:center;
+}
+
+.container{
+max-width:500px;
+width:100%;
+padding:20px 15px 40px;
+}
+
+.section{
+background:var(--white);
+border-radius:20px;
+padding:25px 20px;
+margin-bottom:20px;
+box-shadow:0 8px 20px rgba(0,0,0,0.05);
+border:2px solid var(--main);
+}
+
+h1,h2,h3{color:var(--dark); margin-bottom: 15px;}
+.center{text-align:center;}
+
+.logo{
+width:150px;height:150px;
+border-radius:50%;
+overflow:hidden;
+margin:0 auto 20px;
+box-shadow:0 6px 20px var(--glow);
+}
+
+.logo img{width:100%;height:100%;object-fit:cover;}
+
+.badges{
+display:flex;
+flex-wrap:wrap;
+justify-content:center;
+gap:10px;
+margin-bottom:20px;
+}
+
+.badge{
+background:#fff;
+padding:8px 16px;
+border-radius:25px;
+box-shadow:0 4px 10px var(--glow);
+font-size:13px;
+color:var(--dark);
+}
+
+.btn{
+display:block;
+text-align:center;
+padding:14px;
+border-radius:25px;
+text-decoration:none;
+margin-top:15px;
+font-weight:500;
+transition: 0.3s;
+}
+
+.btn-outline{
+background:#fff;
+border:2px dashed var(--main);
+color:var(--dark);
+}
+
+.btn-main{
+background:var(--main);
+color:#fff;
+}
+
+.step{
+display:flex;
+align-items:center;
+gap:12px;
+margin-bottom:12px;
+}
+
+.step-num{
+background:var(--main);
+color:#fff;
+width:26px;height:26px;
+border-radius:50%;
+display:flex;
+align-items:center;
+justify-content:center;
+font-size:13px;
+}
+
+/* สไตล์เพิ่มเติมสำหรับรูปเลื่อนแนวนอน */
+.scroll-container {
+display: flex;
+overflow-x: auto;
+gap: 15px;
+padding: 10px 0;
+scroll-snap-type: x mandatory;
+scrollbar-width: none; /* ซ่อน scrollbar สำหรับ Firefox */
+}
+.scroll-container::-webkit-scrollbar { display: none; } /* ซ่อน scrollbar สำหรับ Chrome */
+
+.product-card {
+flex: 0 0 80%; /* ขนาดรูป 1:1 แบบเห็นใบถัดไปนิดหน่อย */
+aspect-ratio: 1/1;
+background: #eee;
+border-radius: 15px;
+overflow: hidden;
+scroll-snap-align: center;
+border: 1px solid #eee;
+}
+.product-card img { width: 100%; height: 100%; object-fit: cover; }
+
+.price-row{
+display:flex;
+justify-content:space-between;
+margin-bottom:10px;
+background:#fffcfd;
+padding:10px 15px;
+border-radius:15px;
+}
+
+.price-tag{
+background:var(--main);
+color:#fff;
+padding:3px 12px;
+border-radius:20px;
+font-size:14px;
+}
+
+.footer{
+text-align:center;
+margin-top:30px;
+}
+
+.socials{
+display:flex;
+gap:8px;
+justify-content:center;
+margin-top:15px;
+}
+
+.socials a{
+flex:1;
+max-width:150px;
+text-align:center;
+padding:10px;
+border-radius:25px;
+background:#fff;
+text-decoration:none;
+color:var(--dark);
+font-size:13px;
+border:1px solid var(--main);
+}
+
+.small{font-size:12px;opacity:.7;margin-top:10px;}
+</style>
+</head>
+<body>
+<div class="container">
+
+<div class="section center" style="border:none;box-shadow:none;background:transparent;">
+<div class="logo">
+<img src="logo.jpg" alt="Julylynchu Logo">
+</div>
+
+<h1>Julylynchu</h1>
+<div style="color:var(--dark);opacity:.8;margin:10px 0 20px; white-space: pre-line;">
+🥣 ⌇𝚆𝚎𝚕𝚌𝚘𝚖𝚎 𝚝𝚘 𝚖𝚢 𝚜𝚑𝚘𝚙
+𓂂◟✿ จูรับเติมเกม𓈒ปล่อยเช่า𓈒ดันขาย𓈒จำหน่ายแอพพรี 💌💨
+สนใจรายการไหนสามารถแคปไปแจ้งจูได้เลยน้า 💖
+
+ ྀི︶˚̣̣̣⠀⠀⠀(⁠ᗒ⩊ᗕ ྀི)⠀⠀⠀˚̣̣̣︶ ྀ
+</div>
+
+<div class="badges">
+<div class="badge">🎨 รับเติม</div>
+<div class="badge">🎮 ปล่อยเช่ารหัส</div>
+<div class="badge">📱 จำหน่ายแอพพรี</div>
+<div class="badge">🚀 ดันขายไอดี</div>
+</div>
+
+<div class="badge" style="margin: 0 auto 15px; display: table;">Open-Close 09:00-00:00</div>
+
+<a href="#" class="btn btn-outline">
+เช็คคิวไอดี คลิก ! ✨
+</a>
+</div>
+<div class="section">
+<h2>🎮 ปล่อยเช่ารหัส (ROV / MLBB / HOK)</h2>
+
+<p style="margin-bottom:10px; font-size:14px; color:var(--dark);">• ROV / MLBB / HOK</p>
+<div class="scroll-container">
+    <div class="product-card"><img src="rov1.jpg" alt="ROV"></div>
+    <div class="product-card"><img src="mlbb1.jpg" alt="MLBB"></div>
+    <div class="product-card"><img src="hok1.jpg" alt="HOK"></div>
+</div>
+
+<a href="#" class="btn btn-main">เช็คคิวงาน</a>
+</div>
+
+<div class="section">
+<h2>📋 ขั้นตอนการยืนยันตัวตน</h2>
+<p style="margin-bottom:10px; font-size:14px; color:var(--dark);">ก่อนเช่าไอดี โปรดอ่านรายละเอียด</p>
+<div class="scroll-container">
+    <div class="product-card"><img src="step1.jpg" alt="Step 1"></div>
+    <div class="product-card"><img src="step2.jpg" alt="Step 2"></div>
+</div>
+</div>
+
+<div class="section">
+<h2>💎 บริการเติมเกมกับจู</h2>
+<div class="scroll-container">
+    <div class="product-card"><img src="topup1.jpg" alt="Topup 1"></div>
+    <div class="product-card"><img src="topup2.jpg" alt="Topup 2"></div>
+</div>
+<a href="#" class="btn btn-main">ดูรูปเต็มๆ คลิก !</a>
+</div>
+
+<div class="section" style="background: #FFF9FA;">
+<h2 class="center">📍 กฎของร้าน 📍</h2>
+<div class="step"><div class="step-num">•</div><div>ถ้าโอนเงินแล้วทางร้านไม่คืนเงินทุกกรณีนะคะ</div></div>
+<div class="step"><div class="step-num">•</div><div>จอง = โอน หากยกเลิกภายหลังไม่มีการคืนเงินใดๆทั้งสิ้นค่ะ</div></div>
+</div>
+
+<div class="section">
+<h2>📱 จำหน่ายแอพพรีเมี่ยม</h2>
+<p style="margin-bottom:10px; font-size:14px; color:var(--dark);">แอพพรีเมี่ยมราคาถูก</p>
+<div class="scroll-container">
+    <div class="product-card"><img src="app1.jpg" alt="App 1"></div>
+    <div class="product-card"><img src="app2.jpg" alt="App 2"></div>
+</div>
+</div>
+
+<div class="footer">
+<a href="https://line.me/ti/p/LfBtdhlrVa" class="btn btn-main">ติดต่อสอบถามคลิก 🎀</a>
+
+<div class="socials">
+<a href="https://www.facebook.com/profile.php?id=61554192600355" target="_blank">Facebook</a>
+<a href="https://line.me/ti/p/LfBtdhlrVa" target="_blank">LINE</a>
+</div>
+
+<p class="small">
+© 2026 Julylynchu Store
+</p>
+</div>
+
+</div>
+</body>
+</html>
