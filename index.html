@@ -172,7 +172,7 @@ transition: transform 0.2s;
     width: 100%; 
     height: 100%; 
     object-fit: cover; 
-    pointer-events: none; /* กันการลากรูปหลุดออกมาขณะเลื่อน */
+    pointer-events: none;
 }
 
 .product-card:active { transform: scale(0.98); }
@@ -189,6 +189,7 @@ color:var(--dark); font-size:14px; border: 1px solid var(--soft-purple);
 
 .small{font-size:12px;opacity:.6;margin-top:15px;}
 
+/* --- Bottom Navigation Styles --- */
 .bottom-nav {
 position: fixed;
 bottom: 0; left: 50%;
@@ -218,7 +219,21 @@ flex: 1;
 }
 
 .nav-item.active { color: var(--dark); }
-.nav-item span { font-size: 22px; margin-bottom: 2px; }
+
+/* สไตล์ไอคอนรูปภาพ */
+.nav-icon {
+    width: 24px;
+    height: 24px;
+    margin-bottom: 4px;
+    opacity: 0.4; /* จางลงเมื่อไม่ถูกเลือก */
+    transition: 0.3s;
+    object-fit: contain;
+}
+
+.nav-item.active .nav-icon {
+    opacity: 1; /* ชัดเจนเมื่อถูกเลือก */
+    filter: drop-shadow(0 0 5px var(--glow));
+}
 
 .page { display: none; animation: fadeIn 0.4s ease; }
 .page.active { display: block; }
@@ -329,16 +344,16 @@ to { opacity: 1; transform: translateY(0); }
 
 <nav class="bottom-nav">
     <div class="nav-item active" onclick="switchTab('home')">
-        <span>🏠</span>หน้าแรก
+        <img src="uploads/home.png" class="nav-icon">หน้าแรก
     </div>
     <div class="nav-item" onclick="switchTab('rent')">
-        <span>🎮</span>เช่ารหัส
+        <img src="uploads/game-console.png" class="nav-icon">เช่ารหัส
     </div>
     <div class="nav-item" onclick="switchTab('shop')">
-        <span>💎</span>บริการ
+        <img src="uploads/layout.png" class="nav-icon">บริการ
     </div>
     <div class="nav-item" onclick="switchTab('contact')">
-        <span>💬</span>ติดต่อ
+        <img src="uploads/communicate.png" class="nav-icon">ติดต่อ
     </div>
 </nav>
 
@@ -366,7 +381,7 @@ containers.forEach(slider => {
 
     slider.addEventListener('mousedown', (e) => {
         isDown = true;
-        isMoved = false; // รีเซ็ตสถานะการเคลื่อนที่
+        isMoved = false;
         startX = e.pageX - slider.offsetLeft;
         scrollLeft = slider.scrollLeft;
     });
@@ -378,13 +393,12 @@ containers.forEach(slider => {
         if(!isDown) return;
         const x = e.pageX - slider.offsetLeft;
         const walk = (x - startX) * 2;
-        if (Math.abs(x - startX) > 5) { // ถ้าลากเกิน 5px ถือว่ากำลังเลื่อน
+        if (Math.abs(x - startX) > 5) {
             isMoved = true;
         }
         slider.scrollLeft = scrollLeft - walk;
     });
 
-    // ป้องกันการเด้งไปลิ้งค์ขณะที่แค่จะลากเปลี่ยนรูป
     slider.querySelectorAll('a').forEach(link => {
         link.addEventListener('click', (e) => {
             if (isMoved) {
