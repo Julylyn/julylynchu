@@ -152,6 +152,19 @@
         }
         .image-card img { width: 100%; height: 100%; object-fit: cover; }
 
+        /* Sub-category Label */
+        .game-label {
+            font-size: 14px;
+            font-weight: 500;
+            color: var(--accent);
+            margin: 15px 0 5px 15px;
+            background: #fff;
+            display: inline-block;
+            padding: 2px 12px;
+            border-radius: 10px;
+            box-shadow: 2px 2px 5px rgba(0,0,0,0.05);
+        }
+
         /* Bottom Nav */
         .navbar {
             position: fixed;
@@ -229,10 +242,23 @@
 
     <div id="rent" class="page">
         <div class="section-title"><i class="fas fa-id-badge"></i> รหัสว่างพร้อมเช่า</div>
+        
+        <div class="game-label">ROV</div>
         <div class="scroll-wrapper">
-            <div class="image-card"><img src="rov1.jpg" alt="ROV"></div>
-            <div class="image-card"><img src="mlbb1.jpg" alt="MLBB"></div>
-            <div class="image-card"><img src="hok1.jpg" alt="HOK"></div>
+            <div class="image-card"><img src="rov1.jpg" alt="ROV 1"></div>
+            <div class="image-card"><img src="rov2.jpg" alt="ROV 2"></div>
+        </div>
+
+        <div class="game-label">MLBB</div>
+        <div class="scroll-wrapper">
+            <div class="image-card"><img src="mlbb1.jpg" alt="MLBB 1"></div>
+            <div class="image-card"><img src="mlbb2.jpg" alt="MLBB 2"></div>
+        </div>
+
+        <div class="game-label">HOK</div>
+        <div class="scroll-wrapper">
+            <div class="image-card"><img src="hok1.jpg" alt="HOK 1"></div>
+            <div class="image-card"><img src="hok2.jpg" alt="HOK 2"></div>
         </div>
 
         <div class="section-title"><i class="fas fa-info-circle"></i> ขั้นตอนการเช่า</div>
