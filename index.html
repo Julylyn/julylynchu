@@ -121,6 +121,40 @@
         .scroll-wrapper { display: flex; overflow-x: auto; gap: 12px; padding: 10px 5px 20px; scroll-snap-type: x mandatory; scrollbar-width: none; }
         .scroll-wrapper::-webkit-scrollbar { display: none; }
         
+        /* สไตล์ Card สำหรับปล่อยเช่าที่มีข้อความด้านล่าง */
+        .rent-card {
+            flex: 0 0 180px;
+            display: flex;
+            flex-direction: column;
+            gap: 8px;
+            background: transparent;
+        }
+
+        .image-card {
+            width: 100%;
+            height: 240px; 
+            background: #eee;
+            border-radius: 15px;
+            overflow: hidden;
+            border: 2px solid #fff;
+            box-shadow: 0 4px 15px rgba(0,0,0,0.05);
+            transition: 0.3s;
+            cursor: zoom-in;
+        }
+        .image-card:hover { border-color: var(--secondary); box-shadow: var(--border-glow); }
+        .image-card img { width: 100%; height: 100%; object-fit: cover; }
+
+        .card-detail {
+            text-align: center;
+            font-size: 13px;
+            line-height: 1.4;
+            color: var(--text-dark);
+            font-weight: 500;
+            background: rgba(255,255,255,0.5);
+            padding: 5px;
+            border-radius: 10px;
+        }
+
         .static-image-container {
             display: grid;
             grid-template-columns: 1fr 1fr;
@@ -128,20 +162,6 @@
             padding: 0 5px;
             margin-bottom: 15px;
         }
-
-        .image-card {
-            width: 100%;
-            aspect-ratio: 1/1; 
-            background: #eee;
-            border-radius: 20px;
-            overflow: hidden;
-            border: 3px solid #fff;
-            box-shadow: 0 4px 15px rgba(0,0,0,0.05);
-            transition: 0.3s;
-            cursor: zoom-in;
-        }
-        .image-card:hover { border-color: var(--secondary); box-shadow: var(--border-glow); }
-        .image-card img { width: 100%; height: 100%; object-fit: cover; }
 
         .game-label {
             font-size: 14px; font-weight: 500; color: var(--text-dark); margin: 15px 0 5px 15px;
@@ -200,7 +220,6 @@
         <div class="profile-card">
             <img src="contacts/cover.JPG" class="cover-img" alt="Cover" onclick="openModal(this.src)">
             <img src="contacts/profile.JPG" class="profile-img" alt="Julylynchu" onclick="openModal(this.src)">
-            
             <div class="profile-info">
                 <h1>Julylynchu 🍪</h1>
                 <p>Welcome to my store!<br>รับเติมเกม • ปล่อยเช่า • จำหน่ายแอพพรี • ดันขายไอดี</p>
@@ -217,13 +236,11 @@
         </div>
 
         <div class="section-title" style="margin-top: 35px;"><i class="fas fa-comments"></i> ช่องทางติดต่อ</div>
-        
         <div class="static-image-container">
             <div class="image-card"><img src="contacts/facebook.png" alt="facebook" onclick="openModal(this.src)"></div>
             <div class="image-card"><img src="contacts/line.png" alt="line" onclick="openModal(this.src)"></div>
         </div>
-
-        <a href="https://lin.ee/qjPOQ0V" class="link-item"><i class="fab fa-line"></i> LINE Official</a>
+        <a href="https://line.ee/qjPOQ0V" class="link-item"><i class="fab fa-line"></i> LINE Official</a>
         <a href="https://www.facebook.com/profile.php?id=61586046260927" class="link-item"><i class="fab fa-facebook"></i> Facebook</a>
         
         <div class="profile-card" style="margin-top: 30px; padding: 20px;">
@@ -233,23 +250,41 @@
     </div>
 
     <div id="rent" class="page">
-        <div class="section-title"><i class="fas fa-id-badge"></i> รวมรหัสปล่อยเช่าร้ายจู</div>
+        <div class="section-title"><i class="fas fa-id-badge"></i> รวมรหัสปล่อยเช่าร้านจู</div>
+        
         <div class="game-label">ROV</div>
         <div class="scroll-wrapper">
-            <div class="image-card" style="width:180px;"><img src="rov1.jpg" alt="ROV 1" onclick="openModal(this.src)"></div>
-            <div class="image-card" style="width:180px;"><img src="rov2.jpg" alt="ROV 2" onclick="openModal(this.src)"></div>
+            <div class="rent-card">
+                <div class="image-card"><img src="rov1.jpg" alt="ROV 1" onclick="openModal(this.src)"></div>
+                <div class="card-detail">VIP10<br>25฿/Hr</div>
+            </div>
+            <div class="rent-card">
+                <div class="image-card"><img src="rov2.jpg" alt="ROV 2" onclick="openModal(this.src)"></div>
+                <div class="card-detail">VIP8<br>20฿/Hr</div>
+            </div>
         </div>
+
         <div class="game-label">MLBB</div>
         <div class="scroll-wrapper">
-            <div class="image-card" style="width:180px;"><img src="mlbb1.jpg" alt="MLBB 1" onclick="openModal(this.src)"></div>
-            <div class="image-card" style="width:180px;"><img src="mlbb2.jpg" alt="MLBB 2" onclick="openModal(this.src)"></div>
+            <div class="rent-card">
+                <div class="image-card"><img src="mlbb1.jpg" alt="MLBB 1" onclick="openModal(this.src)"></div>
+                <div class="card-detail">Skins 300+<br>30฿/Hr</div>
+            </div>
+            <div class="rent-card">
+                <div class="image-card"><img src="mlbb2.jpg" alt="MLBB 2" onclick="openModal(this.src)"></div>
+                <div class="card-detail">Full Hero<br>25฿/Hr</div>
+            </div>
         </div>
+
         <div class="game-label">HOK</div>
         <div class="scroll-wrapper">
-            <div class="image-card" style="width:180px;"><img src="hok1.jpg" alt="HOK 1" onclick="openModal(this.src)"></div>
-            <div class="image-card" style="width:180px;"><img src="hok2.jpg" alt="HOK 2" onclick="openModal(this.src)"></div>
+            <div class="rent-card">
+                <div class="image-card"><img src="hok1.jpg" alt="HOK 1" onclick="openModal(this.src)"></div>
+                <div class="card-detail">New ID<br>15฿/Hr</div>
+            </div>
         </div>
-        <div class="section-title"><i class="fas fa-info-circle"></i> ขั้นตอนการเช่า</div>
+
+        <div class="section-title" style="margin-top: 25px;"><i class="fas fa-info-circle"></i> ขั้นตอนการเช่า</div>
         <a href="#" class="link-item"><i class="fas fa-1"></i> เลือกรหัสที่ต้องการ</a>
         <a href="#" class="link-item"><i class="fas fa-2"></i> ทักแชทเพื่อเช็คคิว</a>
         <a href="#" class="link-item"><i class="fas fa-3"></i> โอนเงินและยืนยันตัวตน</a>
