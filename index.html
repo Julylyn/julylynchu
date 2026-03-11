@@ -27,7 +27,7 @@ position: relative;
 overflow-x: hidden;
 }
 
-/* พื้นหลังดาวลอยลงมาช้าๆ */
+/* Background Snowfall Effect */
 body::before {
 content: "";
 position: fixed;
@@ -117,25 +117,6 @@ color:#fff;
 box-shadow: 0 6px 20px var(--glow);
 }
 
-.step{
-display:flex;
-align-items:center;
-gap:12px;
-margin-bottom:12px;
-}
-
-.step-num{
-background: var(--main);
-color:#fff;
-width:26px;height:26px;
-border-radius:50%;
-display:flex;
-align-items:center;
-justify-content:center;
-font-size:13px;
-}
-
-/* แถบเลื่อนรูปภาพ (Drag to scroll) */
 .scroll-container {
 display: flex;
 overflow-x: auto;
@@ -150,7 +131,6 @@ cursor: grab;
 
 .scroll-container::-webkit-scrollbar { height: 4px; }
 .scroll-container::-webkit-scrollbar-thumb { background: var(--main); border-radius: 10px; }
-.scroll-container:active { cursor: grabbing; }
 
 .product-card {
 flex: 0 0 80%;
@@ -163,11 +143,9 @@ border: 1px solid var(--soft-purple);
 transition: transform 0.2s;
 }
 
-.product-card a { display: block; width: 100%; height: 100%; text-decoration: none; }
 .product-card img { width: 100%; height: 100%; object-fit: cover; pointer-events: none; }
-.product-card:active { transform: scale(0.98); }
 
-/* Bottom Navigation */
+/* Bottom Nav */
 .bottom-nav {
 position: fixed;
 bottom: 0; left: 50%;
@@ -191,19 +169,12 @@ align-items: center;
 text-decoration: none;
 color: #A0A0A0;
 font-size: 11px;
-transition: 0.3s;
 cursor: pointer;
 flex: 1;
 }
 
 .nav-item.active { color: var(--dark); }
-
-.nav-icon {
-width: 24px; height: 24px;
-margin-bottom: 4px; opacity: 0.4;
-transition: 0.3s; object-fit: contain;
-}
-
+.nav-icon { width: 24px; height: 24px; margin-bottom: 4px; opacity: 0.4; transition: 0.3s; }
 .nav-item.active .nav-icon { opacity: 1; filter: drop-shadow(0 0 5px var(--glow)); }
 
 .page { display: none; animation: fadeIn 0.4s ease; }
@@ -221,7 +192,7 @@ to { opacity: 1; transform: translateY(0); }
 
     <div id="home" class="page active">
         <div class="section center" style="border:none;box-shadow:none;background:transparent;">
-            <div class="logo"><img src="logo.png" alt="Julylynchu Logo"></div>
+            <div class="logo"><img src="logo.png" alt="Logo"></div>
             <h1>Julylynchu</h1>
             <div style="color:var(--dark);opacity:.9;margin:15px 0 25px; white-space: pre-line; line-height: 1.6;">
                 🥣 ⌇𝚆𝚎𝚕𝚌𝚘𝚖𝚎 𝚝𝚘 𝚖𝚢 𝚜𝚑𝚘𝚙
@@ -238,49 +209,30 @@ to { opacity: 1; transform: translateY(0); }
             </div>
             <a href="#" class="btn btn-outline" onclick="switchTab('rent')">Open-Close 09:00-00:00 ✨</a>
         </div>
-
-        <div class="section" style="background: linear-gradient(to bottom, #fff, #FFF9FA); border-color: #FFCDD2;">
-            <h2 class="center" style="color: #D32F2F; margin-bottom: 20px;">📍 กฎของร้าน 📍</h2>
-            <div class="step"><div class="step-num" style="background:#EF5350;">•</div><div style="font-weight: 500;">ถ้าโอนเงินแล้วทางร้านไม่คืนเงินทุกกรณีนะคะ</div></div>
-            <div class="step"><div class="step-num" style="background:#EF5350;">•</div><div style="font-weight: 500;">จอง = โอน หากยกเลิกภายหลังไม่มีคืนเงินใดๆ</div></div>
+        <div class="section">
+            <h2 class="center" style="color: #D32F2F;">📍 กฎของร้าน 📍</h2>
+            <p style="text-align:center; font-size:14px; margin-top:10px;">• โอนแล้วไม่คืนเงินทุกกรณี<br>• จอง = โอน</p>
         </div>
     </div>
 
     <div id="rent" class="page">
         <div class="section">
-            <h2>🎮 ปล่อยเช่ารหัส (ROV / MLBB / HOK)</h2>
-            <p style="margin: 10px 0 5px; font-size:14px; color:var(--dark); font-weight: 500;">• ROV</p>
+            <h2>🎮 ปล่อยเช่ารหัส</h2>
+            <p style="margin: 10px 0 5px; font-size:14px;">• ROV / MLBB / HOK</p>
             <div class="scroll-container">
-                <div class="product-card"><a href="#"><img src="rov1.jpg" alt="ROV 1"></a></div>
-                <div class="product-card"><a href="#"><img src="mlbb1.jpg" alt="ID 2"></a></div>
-            </div>
-            <p style="margin: 10px 0 5px; font-size:14px; color:var(--dark); font-weight: 500;">• MLBB / HOK</p>
-            <div class="scroll-container">
-                <div class="product-card"><a href="#"><img src="hok1.jpg" alt="HOK 1"></a></div>
+                <div class="product-card"><a href="#"><img src="rov1.jpg"></a></div>
+                <div class="product-card"><a href="#"><img src="mlbb1.jpg"></a></div>
             </div>
             <a href="#" class="btn btn-main">เช็คคิวไอดี คลิก !</a>
-        </div>
-        <div class="section">
-            <h2>📋 ขั้นตอนการยืนยันตัวตน</h2>
-            <div class="scroll-container">
-                <div class="product-card"><a href="#"><img src="step1.jpg" alt="Step 1"></a></div>
-            </div>
         </div>
     </div>
 
     <div id="shop" class="page">
         <div class="section">
-            <h2>💎 บริการเติมเกมกับจู</h2>
+            <h2>💎 บริการเติมเกม</h2>
             <div class="scroll-container">
-                <div class="product-card"><a href="#"><img src="topup1.jpg" alt="Topup 1"></a></div>
-                <div class="product-card"><a href="#"><img src="topup2.jpg" alt="Topup 2"></a></div>
-            </div>
-            <a href="#" class="btn btn-main">ดูรูปเต็มๆ คลิก !</a>
-        </div>
-        <div class="section">
-            <h2>📱 จำหน่ายแอพพรีเมี่ยม</h2>
-            <div class="scroll-container">
-                <div class="product-card"><a href="#"><img src="app1.jpg" alt="App 1"></a></div>
+                <div class="product-card"><a href="#"><img src="topup1.jpg"></a></div>
+                <div class="product-card"><a href="#"><img src="topup2.jpg"></a></div>
             </div>
         </div>
     </div>
@@ -288,17 +240,10 @@ to { opacity: 1; transform: translateY(0); }
     <div id="contact" class="page">
         <div class="section center">
             <h2>📱 ช่องทางติดต่อ</h2>
-            <div style="margin: 20px 0;">
-                <p style="color:var(--dark);">สามารถสอบถามจูได้ทุกช่องทางเลยน้า</p>
-            </div>
             <a href="https://line.me/ti/p/LfBtdhlrVa" class="btn btn-main">ทักแชท LINE 🎀</a>
-            <div class="socials">
+            <div class="socials" style="margin-top:20px;">
                 <a href="https://www.facebook.com/profile.php?id=61586046260927" target="_blank">Facebook</a>
-                <a href="https://line.me/ti/p/LfBtdhlrVa" target="_blank">LINE</a>
             </div>
-        </div>
-        <div class="footer">
-            <p class="small">© 2026 Julylynchu Store • All Rights Reserved</p>
         </div>
     </div>
 
@@ -320,54 +265,30 @@ to { opacity: 1; transform: translateY(0); }
 </nav>
 
 <script>
-// ฟังก์ชันสลับหน้า Tab
 function switchTab(tabId) {
-    const pages = document.querySelectorAll('.page');
-    pages.forEach(page => page.classList.remove('active'));
-    const navItems = document.querySelectorAll('.nav-item');
-    navItems.forEach(item => item.classList.remove('active'));
-    
+    document.querySelectorAll('.page').forEach(p => p.classList.remove('active'));
+    document.querySelectorAll('.nav-item').forEach(i => i.classList.remove('active'));
     document.getElementById(tabId).classList.add('active');
-    const activeNav = Array.from(navItems).find(item => 
-        item.getAttribute('onclick').includes(tabId)
-    );
-    if(activeNav) activeNav.classList.add('active');
+    event.currentTarget.classList.add('active');
     window.scrollTo({ top: 0, behavior: 'smooth' });
 }
 
-// ระบบ Drag to Scroll สำหรับคอมพิวเตอร์
-const containers = document.querySelectorAll('.scroll-container');
-containers.forEach(slider => {
-    let isDown = false;
-    let startX;
-    let scrollLeft;
-    let isMoved = false;
-
-    slider.addEventListener('mousedown', (e) => {
-        isDown = true;
-        isMoved = false;
-        startX = e.pageX - slider.offsetLeft;
-        scrollLeft = slider.scrollLeft;
-    });
-
-    slider.addEventListener('mouseleave', () => { isDown = false; });
-    slider.addEventListener('mouseup', () => { isDown = false; });
-
+// Drag Scroll Script
+const sliders = document.querySelectorAll('.scroll-container');
+sliders.forEach(slider => {
+    let isDown = false, startX, scrollLeft, isMoved;
+    slider.addEventListener('mousedown', (e) => { isDown = true; isMoved = false; startX = e.pageX - slider.offsetLeft; scrollLeft = slider.scrollLeft; });
+    slider.addEventListener('mouseleave', () => isDown = false);
+    slider.addEventListener('mouseup', () => isDown = false);
     slider.addEventListener('mousemove', (e) => {
         if(!isDown) return;
+        e.preventDefault();
         const x = e.pageX - slider.offsetLeft;
         const walk = (x - startX) * 2;
-        if (Math.abs(x - startX) > 5) {
-            isMoved = true;
-        }
+        if(Math.abs(x - startX) > 5) isMoved = true;
         slider.scrollLeft = scrollLeft - walk;
     });
-
-    slider.querySelectorAll('a').forEach(link => {
-        link.addEventListener('click', (e) => {
-            if (isMoved) e.preventDefault();
-        });
-    });
+    slider.querySelectorAll('a').forEach(a => a.addEventListener('click', (e) => { if(isMoved) e.preventDefault(); }));
 });
 </script>
 
