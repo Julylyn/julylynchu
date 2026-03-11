@@ -27,6 +27,7 @@ position: relative;
 overflow-x: hidden;
 }
 
+/* พื้นหลังดาวลอยลงมาช้าๆ */
 body::before {
 content: "";
 position: fixed;
@@ -134,6 +135,7 @@ justify-content:center;
 font-size:13px;
 }
 
+/* แถบเลื่อนรูปภาพ (Drag to scroll) */
 .scroll-container {
 display: flex;
 overflow-x: auto;
@@ -161,35 +163,11 @@ border: 1px solid var(--soft-purple);
 transition: transform 0.2s;
 }
 
-.product-card a {
-    display: block;
-    width: 100%;
-    height: 100%;
-    text-decoration: none;
-}
-
-.product-card img { 
-    width: 100%; 
-    height: 100%; 
-    object-fit: cover; 
-    pointer-events: none;
-}
-
+.product-card a { display: block; width: 100%; height: 100%; text-decoration: none; }
+.product-card img { width: 100%; height: 100%; object-fit: cover; pointer-events: none; }
 .product-card:active { transform: scale(0.98); }
 
-.footer{ text-align:center; margin-top:10px; }
-
-.socials{ display:flex; gap:10px; justify-content:center; margin-top:15px; }
-
-.socials a{
-flex:1; max-width:150px; text-align:center; padding:12px;
-border-radius:25px; background:#fff; text-decoration:none;
-color:var(--dark); font-size:14px; border: 1px solid var(--soft-purple);
-}
-
-.small{font-size:12px;opacity:.6;margin-top:15px;}
-
-/* --- Bottom Navigation Styles --- */
+/* Bottom Navigation */
 .bottom-nav {
 position: fixed;
 bottom: 0; left: 50%;
@@ -220,20 +198,13 @@ flex: 1;
 
 .nav-item.active { color: var(--dark); }
 
-/* สไตล์ไอคอนรูปภาพ */
 .nav-icon {
-    width: 24px;
-    height: 24px;
-    margin-bottom: 4px;
-    opacity: 0.4; /* จางลงเมื่อไม่ถูกเลือก */
-    transition: 0.3s;
-    object-fit: contain;
+width: 24px; height: 24px;
+margin-bottom: 4px; opacity: 0.4;
+transition: 0.3s; object-fit: contain;
 }
 
-.nav-item.active .nav-icon {
-    opacity: 1; /* ชัดเจนเมื่อถูกเลือก */
-    filter: drop-shadow(0 0 5px var(--glow));
-}
+.nav-item.active .nav-icon { opacity: 1; filter: drop-shadow(0 0 5px var(--glow)); }
 
 .page { display: none; animation: fadeIn 0.4s ease; }
 .page.active { display: block; }
@@ -250,7 +221,7 @@ to { opacity: 1; transform: translateY(0); }
 
     <div id="home" class="page active">
         <div class="section center" style="border:none;box-shadow:none;background:transparent;">
-            <div class="logo"><img src="logo.png" alt="Logo"></div>
+            <div class="logo"><img src="logo.png" alt="Julylynchu Logo"></div>
             <h1>Julylynchu</h1>
             <div style="color:var(--dark);opacity:.9;margin:15px 0 25px; white-space: pre-line; line-height: 1.6;">
                 🥣 ⌇𝚆𝚎𝚕𝚌𝚘𝚖𝚎 𝚝𝚘 𝚖𝚢 𝚜𝚑𝚘𝚙
@@ -260,10 +231,10 @@ to { opacity: 1; transform: translateY(0); }
                  ྀི︶˚̣̣̣⠀⠀⠀(⁠ᗒ⩊ᗕ ྀི)⠀⠀⠀˚̣̣̣︶ ྀ
             </div>
             <div class="badges">
-                <div class="badge">รับเติมเกม</div>
-                <div class="badge">ปล่อยเช่ารหัส</div>
-                <div class="badge">จำหน่ายแอพพรี</div>
-                <div class="badge">ดันขายไอดี</div>
+                <div class="badge">🎨 รับเติม</div>
+                <div class="badge">🎮 ปล่อยเช่ารหัส</div>
+                <div class="badge">📱 จำหน่ายแอพพรี</div>
+                <div class="badge">🚀 ดันขายไอดี</div>
             </div>
             <a href="#" class="btn btn-outline" onclick="switchTab('rent')">Open-Close 09:00-00:00 ✨</a>
         </div>
@@ -280,31 +251,19 @@ to { opacity: 1; transform: translateY(0); }
             <h2>🎮 ปล่อยเช่ารหัส (ROV / MLBB / HOK)</h2>
             <p style="margin: 10px 0 5px; font-size:14px; color:var(--dark); font-weight: 500;">• ROV</p>
             <div class="scroll-container">
-                <div class="product-card"><a href="ใส่ลิ้งค์ที่นี่"><img src="rov1.jpg" alt="ID1"></a></div>
-                <div class="product-card"><a href="ใส่ลิ้งค์ที่นี่"><img src="mlbb1.jpg" alt="ID2"></a></div>
+                <div class="product-card"><a href="#"><img src="rov1.jpg" alt="ROV 1"></a></div>
+                <div class="product-card"><a href="#"><img src="mlbb1.jpg" alt="ID 2"></a></div>
             </div>
-            <p style="margin: 10px 0 5px; font-size:14px; color:var(--dark); font-weight: 500;">• MLBB เริ้มต้นชั่วโมงละ 25-35฿ เช่าขั้นต่ำ 2ชั่วโมง</p>
+            <p style="margin: 10px 0 5px; font-size:14px; color:var(--dark); font-weight: 500;">• MLBB / HOK</p>
             <div class="scroll-container">
-                <div class="product-card"><a href="ใส่ลิ้งค์ที่นี่"><img src="hok1.jpg" alt="ID1"></a></div>
-                <div class="product-card"><a href="ใส่ลิ้งค์ที่นี่"><img src="hok1.jpg" alt="ID2"></a></div>
-				<div class="product-card"><a href="ใส่ลิ้งค์ที่นี่"><img src="hok1.jpg" alt="ID3"></a></div>
-                <div class="product-card"><a href="ใส่ลิ้งค์ที่นี่"><img src="hok1.jpg" alt="ID4"></a></div>
-				<div class="product-card"><a href="ใส่ลิ้งค์ที่นี่"><img src="hok1.jpg" alt="ID5"></a></div>
-                <div class="product-card"><a href="ใส่ลิ้งค์ที่นี่"><img src="hok1.jpg" alt="ID6"></a></div>
-				<div class="product-card"><a href="ใส่ลิ้งค์ที่นี่"><img src="hok1.jpg" alt="ID7"></a></div>
-            </div>
-            <p style="margin: 10px 0 5px; font-size:14px; color:var(--dark); font-weight: 500;">• HOK</p>
-            <div class="scroll-container">
-                <div class="product-card"><a href="ใส่ลิ้งค์ที่นี่"><img src="hok1.jpg" alt="ID1"></a></div>
-                <div class="product-card"><a href="ใส่ลิ้งค์ที่นี่"><img src="hok1.jpg" alt="ID2"></a></div>
+                <div class="product-card"><a href="#"><img src="hok1.jpg" alt="HOK 1"></a></div>
             </div>
             <a href="#" class="btn btn-main">เช็คคิวไอดี คลิก !</a>
         </div>
         <div class="section">
             <h2>📋 ขั้นตอนการยืนยันตัวตน</h2>
-            <p style="margin-bottom:10px; font-size:14px; color:var(--dark); opacity: 0.8;">โปรดอ่านรายละเอียดก่อนเช่า</p>
             <div class="scroll-container">
-                <div class="product-card"><a href="https://drive.google.com/file/d/1xnxxovsHvTmq360M17GzCJwC38Etj7To/view?usp=drive_link"><img src="uploads/rov.png" alt="วิธียืนยันตัวตน"></a></div>
+                <div class="product-card"><a href="#"><img src="step1.jpg" alt="Step 1"></a></div>
             </div>
         </div>
     </div>
@@ -313,17 +272,15 @@ to { opacity: 1; transform: translateY(0); }
         <div class="section">
             <h2>💎 บริการเติมเกมกับจู</h2>
             <div class="scroll-container">
-                <div class="product-card"><a href="https://drive.google.com/file/d/1PpguDnJg6N7tyHT0_KqD-8CHuX8nSkij/view?usp=drive_link"><img src="uploads/topuprov.png" alt="ROV"></a></div>
-                <div class="product-card"><a href="https://drive.google.com/file/d/1LxEwtf4czvAtHRh8WeD598b-PTBYPYXT/view?usp=drive_link"><img src="uploads/topupmlbb.png" alt="MLBB"></a></div>
-				<div class="product-card"><a href="https://drive.google.com/file/d/1LxEwtf4czvAtHRh8WeD598b-PTBYPYXT/view?usp=drive_link"><img src="uploads/topuphok.png.png" alt="HOK"></a></div>
+                <div class="product-card"><a href="#"><img src="topup1.jpg" alt="Topup 1"></a></div>
+                <div class="product-card"><a href="#"><img src="topup2.jpg" alt="Topup 2"></a></div>
             </div>
+            <a href="#" class="btn btn-main">ดูรูปเต็มๆ คลิก !</a>
         </div>
         <div class="section">
             <h2>📱 จำหน่ายแอพพรีเมี่ยม</h2>
-            <p style="margin-bottom:10px; font-size:14px; color:var(--dark); opacity: 0.8;">แอพราคาถูก</p>
             <div class="scroll-container">
-                <div class="product-card"><a href="ใส่ลิ้งค์ที่นี่"><img src="app1.jpg" alt="App"></a></div>
-                <div class="product-card"><a href="ใส่ลิ้งค์ที่นี่"><img src="app2.jpg" alt="App"></a></div>
+                <div class="product-card"><a href="#"><img src="app1.jpg" alt="App 1"></a></div>
             </div>
         </div>
     </div>
@@ -332,7 +289,7 @@ to { opacity: 1; transform: translateY(0); }
         <div class="section center">
             <h2>📱 ช่องทางติดต่อ</h2>
             <div style="margin: 20px 0;">
-                <p style="color:var(--dark); margin-bottom: 10px;">สามารถสอบถามจูได้ทุกช่องทางเลยน้า</p>
+                <p style="color:var(--dark);">สามารถสอบถามจูได้ทุกช่องทางเลยน้า</p>
             </div>
             <a href="https://line.me/ti/p/LfBtdhlrVa" class="btn btn-main">ทักแชท LINE 🎀</a>
             <div class="socials">
@@ -363,11 +320,13 @@ to { opacity: 1; transform: translateY(0); }
 </nav>
 
 <script>
+// ฟังก์ชันสลับหน้า Tab
 function switchTab(tabId) {
     const pages = document.querySelectorAll('.page');
     pages.forEach(page => page.classList.remove('active'));
     const navItems = document.querySelectorAll('.nav-item');
     navItems.forEach(item => item.classList.remove('active'));
+    
     document.getElementById(tabId).classList.add('active');
     const activeNav = Array.from(navItems).find(item => 
         item.getAttribute('onclick').includes(tabId)
@@ -376,7 +335,7 @@ function switchTab(tabId) {
     window.scrollTo({ top: 0, behavior: 'smooth' });
 }
 
-// ระบบ Drag to Scroll และ Click Link
+// ระบบ Drag to Scroll สำหรับคอมพิวเตอร์
 const containers = document.querySelectorAll('.scroll-container');
 containers.forEach(slider => {
     let isDown = false;
@@ -406,9 +365,7 @@ containers.forEach(slider => {
 
     slider.querySelectorAll('a').forEach(link => {
         link.addEventListener('click', (e) => {
-            if (isMoved) {
-                e.preventDefault();
-            }
+            if (isMoved) e.preventDefault();
         });
     });
 });
