@@ -105,13 +105,12 @@
         .scroll-wrapper { display: flex; overflow-x: auto; gap: 12px; padding: 10px 5px 20px; scroll-snap-type: x mandatory; scrollbar-width: none; }
         .scroll-wrapper::-webkit-scrollbar { display: none; }
         
-        /* สไตล์รูปภาพช่องทางติดต่อแบบแนวนอน */
         .static-image-container {
             display: grid;
-            grid-template-columns: 1fr 1fr; /* แบ่งเป็น 2 คอลัมน์ */
+            grid-template-columns: 1fr 1fr;
             gap: 12px;
             padding: 0 5px;
-            margin-top: 15px;
+            margin-bottom: 15px;
         }
 
         .image-card {
@@ -135,12 +134,12 @@
 
         .navbar {
             position: fixed; bottom: 20px; left: 50%; transform: translateX(-50%);
-            width: 94%; max-width: 480px; background: rgba(255, 255, 255, 0.95);
+            width: 90%; max-width: 400px; background: rgba(255, 255, 255, 0.95);
             backdrop-filter: blur(15px); border-radius: 25px; display: flex;
-            justify-content: space-around; padding: 10px 5px; border: 2px solid var(--secondary);
+            justify-content: space-around; padding: 10px 5px; border: 1.5px solid var(--secondary);
             box-shadow: 0 10px 30px rgba(116, 100, 94, 0.1); z-index: 1000;
         }
-        .nav-link { text-decoration: none; color: #c4b9b9; font-size: 18px; padding: 8px 12px; border-radius: 15px; transition: 0.3s; display: flex; flex-direction: column; align-items: center; gap: 2px; }
+        .nav-link { text-decoration: none; color: #c4b9b9; font-size: 18px; padding: 8px 12px; border-radius: 15px; transition: 0.3s; display: flex; flex-direction: column; align-items: center; gap: 2px; flex: 1; }
         .nav-link span { font-size: 10px; font-weight: 500; }
         .nav-link.active { color: var(--text-dark); background: #fdfbf7; border: 1px solid var(--secondary); }
 
@@ -195,6 +194,21 @@
             <a href="#" onclick="switchTab('sell')" class="service-card"><i class="fas fa-tags"></i><span>Sell ID</span></a>
             <a href="#" onclick="switchTab('shop')" class="service-card"><i class="fas fa-bolt"></i><span>Top up</span></a>
             <a href="#" onclick="switchTab('shop')" class="service-card"><i class="fas fa-mobile-alt"></i><span>App premium</span></a>
+        </div>
+
+        <div class="section-title" style="margin-top: 35px;"><i class="fas fa-comments"></i> ช่องทางติดต่อ</div>
+        
+        <div class="static-image-container">
+            <div class="image-card"><img src="contact_img1.jpg" alt="Contact Info 1" onclick="openModal(this.src)"></div>
+            <div class="image-card"><img src="contact_img2.jpg" alt="Contact Info 2" onclick="openModal(this.src)"></div>
+        </div>
+
+        <a href="https://line.ee/qjPOQ0V" class="link-item"><i class="fab fa-line"></i> LINE Official</a>
+        <a href="https://www.facebook.com/profile.php?id=61586046260927" class="link-item"><i class="fab fa-facebook"></i> Facebook</a>
+        
+        <div class="profile-card" style="margin-top: 30px; padding: 20px;">
+            <p style="color: var(--text-dark); font-weight: 500;">🧺 กฎของร้าน</p>
+            <p style="font-size: 13px;">หากโอนเงินแล้วไม่คืนเงินทุกกรณี<br>จอง = โอน เท่านั้นนะคะ</p>
         </div>
     </div>
 
@@ -251,22 +265,6 @@
         <a href="#" class="link-item"><i class="fas fa-film"></i> Netflix Profile</a>
     </div>
 
-    <div id="contact" class="page">
-        <div class="section-title"><i class="fas fa-comments"></i> ช่องทางติดต่อ</div>
-        <a href="https://line.ee/qjPOQ0V" class="link-item"><i class="fab fa-line"></i> LINE Official</a>
-        <a href="https://www.facebook.com/profile.php?id=61586046260927" class="link-item"><i class="fab fa-facebook"></i> Facebook</a>
-        
-        <div class="static-image-container">
-            <div class="image-card"><img src="contact_img1.jpg" alt="Contact Info 1" onclick="openModal(this.src)"></div>
-            <div class="image-card"><img src="contact_img2.jpg" alt="Contact Info 2" onclick="openModal(this.src)"></div>
-        </div>
-
-        <div class="profile-card" style="margin-top: 30px; padding: 20px;">
-            <p style="color: var(--text-dark); font-weight: 500;">🧺 กฎของร้าน</p>
-            <p style="font-size: 13px;">หากโอนเงินแล้วไม่คืนเงินทุกกรณี<br>จอง = โอน เท่านั้นนะคะ</p>
-        </div>
-    </div>
-
 </div>
 
 <nav class="navbar">
@@ -274,7 +272,6 @@
     <a href="#" class="nav-link" onclick="switchTab('rent')"><i class="fas fa-gamepad"></i><span>Rent</span></a>
     <a href="#" class="nav-link" onclick="switchTab('sell')"><i class="fas fa-tags"></i><span>Sell ID</span></a>
     <a href="#" class="nav-link" onclick="switchTab('shop')"><i class="fas fa-store"></i><span>Shop</span></a>
-    <a href="#" class="nav-link" onclick="switchTab('contact')"><i class="fas fa-user"></i><span>Contact</span></a>
 </nav>
 
 <script>
