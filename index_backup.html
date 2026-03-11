@@ -29,30 +29,42 @@
             overflow-x: hidden;
         }
 
-        /* --- Sakura Background --- */
-        .sakura-bg {
+        /* --- Floating Emoji Background (Falling Down) --- */
+        .emoji-bg {
             position: fixed;
             top: 0; left: 0; width: 100%; height: 100%;
             z-index: -2;
             pointer-events: none;
-            background-image: 
-                url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='20' height='20' viewBox='0 0 20 20'%3E%3Cpath fill='%23ffb3d9' fill-opacity='0.6' d='M10 0c.5 3 2.5 5 5 5 3 .5 5 2.5 5 5-.5 3-2.5 5-5 5-3 .5-5 2.5-5 5-.5-3-2.5-5-5-5-3-.5-5-2.5-5-5 .5-3 2.5-5 5-5 3-.5 5-2.5 5-5z'/%3E%3C/svg%3E"),
-                url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='15' height='15' viewBox='0 0 15 15'%3E%3Cpath fill='%23ffcce6' fill-opacity='0.5' d='M7.5 0c.4 2.2 1.9 3.7 3.7 3.7 2.2.4 3.7 1.9 3.7 3.7-.4 2.2-1.9 3.7-3.7 3.7-2.2.4-3.7 1.9-3.7 3.7-.4-2.2-1.9-3.7-3.7-3.7-2.2-.4-3.7-1.9-3.7-3.7.4-2.2 1.9-3.7 3.7-3.7 2.2-.4 3.7-1.9 3.7-3.7z'/%3E%3C/svg%3E");
-            background-size: 50px 50px, 70px 70px;
-            animation: sakuraFall 25s linear infinite;
         }
 
-        @keyframes sakuraFall {
-            from { background-position: 0 0, 0 0; }
-            to { background-position: 500px 1000px, 200px 800px; }
+        .floating-emoji {
+            position: absolute;
+            font-size: 20px;
+            opacity: 0;
+            filter: blur(1px);
+            animation: fallEmoji linear infinite;
         }
 
+        @keyframes fallEmoji {
+            0% { 
+                transform: translateY(-10vh) rotate(0deg); 
+                opacity: 0; 
+            }
+            10% { opacity: 0.5; }
+            90% { opacity: 0.5; }
+            100% { 
+                transform: translateY(110vh) rotate(360deg); 
+                opacity: 0; 
+            }
+        }
+
+        /* --- แสงฟุ้งรอบพื้นหลัง --- */
         body::before, body::after {
             content: '';
             position: fixed;
             width: 300px; height: 300px; border-radius: 50%;
             background: var(--primary);
-            filter: blur(100px); opacity: 0.2; z-index: -1;
+            filter: blur(100px); opacity: 0.15; z-index: -1;
             animation: floatGlow 12s infinite alternate;
         }
         body::before { top: -50px; left: -100px; }
@@ -71,14 +83,13 @@
             z-index: 1;
         }
 
-        /* Profile Card - Glow Border Only */
         .profile-card {
             background: var(--glass);
             backdrop-filter: blur(10px);
             border-radius: 30px;
             padding: 40px 20px;
             text-align: center;
-            border: 2px solid var(--primary); /* Glow Border */
+            border: 2px solid var(--primary);
             box-shadow: var(--border-glow);
             margin-bottom: 25px;
         }
@@ -92,7 +103,6 @@
             object-fit: cover;
         }
 
-        /* Removed Text Glow */
         .profile-card h1 { font-size: 24px; color: var(--accent); margin-bottom: 10px; }
         .profile-card p { font-size: 14px; line-height: 1.6; color: #888; }
 
@@ -107,7 +117,6 @@
             margin-top: 10px;
         }
 
-        /* Removed Icon Glow */
         .section-title {
             font-size: 18px;
             margin: 25px 0 15px 10px;
@@ -123,7 +132,6 @@
             gap: 15px;
         }
 
-        /* Service Card - Glow Border Only */
         .service-card {
             background: #fff;
             border-radius: 20px;
@@ -140,7 +148,6 @@
         .service-card i { font-size: 24px; color: var(--primary); margin-bottom: 10px; display: block; }
         .service-card span { font-size: 14px; font-weight: 500; }
 
-        /* Link Items - Glow Border on Hover */
         .link-item {
             background: #fff;
             border-radius: 18px;
@@ -163,7 +170,6 @@
         }
         .link-item i { width: 35px; color: var(--accent); font-size: 18px; }
 
-        /* Image Scroller */
         .scroll-wrapper {
             display: flex;
             overflow-x: auto;
@@ -197,7 +203,6 @@
             border: 1px solid var(--secondary);
         }
 
-        /* Navbar - Glow Border */
         .navbar {
             position: fixed;
             bottom: 20px; left: 50%; transform: translateX(-50%);
@@ -234,7 +239,7 @@
 </head>
 <body>
 
-<div class="sakura-bg"></div>
+<div class="emoji-bg" id="emojiContainer"></div>
 
 <div class="container">
     
@@ -300,19 +305,16 @@
 
     <div id="sell" class="page">
         <div class="section-title"><i class="fas fa-tags"></i> Sell ID (ขายไอดีเกม)</div>
-        
         <div class="game-label">ROV</div>
         <div class="scroll-wrapper">
             <div class="image-card"><img src="sell_rov1.jpg" alt="Sell ROV 1"></div>
             <div class="image-card"><img src="sell_rov2.jpg" alt="Sell ROV 2"></div>
         </div>
-
         <div class="game-label">MLBB</div>
         <div class="scroll-wrapper">
             <div class="image-card"><img src="sell_mlbb1.jpg" alt="Sell MLBB 1"></div>
             <div class="image-card"><img src="sell_mlbb2.jpg" alt="Sell MLBB 2"></div>
         </div>
-        
         <div class="profile-card" style="margin-top: 20px; padding: 20px; background: rgba(255,255,255,0.6);">
             <p style="font-size: 13px; color: var(--accent);">✨ สนใจซื้อไอดีไหน แคปรูปทักแชทจูได้เลยนะคะ</p>
         </div>
@@ -368,6 +370,28 @@
         });
         window.scrollTo({ top: 0, behavior: 'smooth' });
     }
+
+    function createEmojis() {
+        const container = document.getElementById('emojiContainer');
+        const emojis = ['🌸'];
+        const emojiCount = 15;
+
+        for (let i = 0; i < emojiCount; i++) {
+            const emoji = document.createElement('div');
+            emoji.className = 'floating-emoji';
+            emoji.innerText = emojis[Math.floor(Math.random() * emojis.length)];
+            
+            emoji.style.left = Math.random() * 100 + 'vw';
+            // สุ่มหน่วงเวลาเริ่มต้นให้ต่างกัน
+            emoji.style.animationDelay = (Math.random() * 20) + 's';
+            // สุ่มความเร็วในการร่วง (10 - 20 วินาที)
+            emoji.style.animationDuration = (Math.random() * 10 + 10) + 's';
+            
+            container.appendChild(emoji);
+        }
+    }
+
+    createEmojis();
 </script>
 
 </body>
