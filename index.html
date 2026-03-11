@@ -9,31 +9,30 @@
     
     <style>
         :root {
-            --primary: #FE9EC7;    /* ชมพู */
-            --secondary: #F9F6C4;  /* เหลืองนวล */
-            --accent: #89D4FF;     /* ฟ้า */
-            --text-dark: #5d4037;
-            --glass: rgba(255, 255, 255, 0.85);
-            --shadow: 0 8px 32px 0 rgba(254, 158, 199, 0.3);
-            --border-glow: 0 0 10px rgba(254, 158, 199, 0.4);
+            --primary: #F9F4E8;    /* พื้นหลังครีม */
+            --secondary: #A89B9B;  /* ขอบ/เส้นเทา */
+            --accent: #74645E;     /* ตัวอักษรน้ำตาลเข้ม */
+            --text-dark: #74645E;  /* ตัวอักษรหลัก */
+            --glass: rgba(255, 255, 255, 0.8);
+            --shadow: 0 8px 32px 0 rgba(116, 100, 94, 0.15);
+            --border-glow: 0 0 10px rgba(168, 155, 155, 0.3);
         }
 
         * { margin: 0; padding: 0; box-sizing: border-box; font-family: 'Mitr', sans-serif; }
 
-        /* --- แก้ไขพื้นหลังไม่ให้กระพริบ --- */
         body {
-            background-color: #fffcf0; /* สีพื้นฐานป้องกันรอยต่อ */
+            background-color: #F9F4E8;
             color: var(--text-dark);
             min-height: 100vh;
             position: relative;
             overflow-x: hidden;
         }
 
-        /* สร้าง Layer พื้นหลังแยกต่างหากเพื่อให้คงที่ตลอดเวลา */
+        /* พื้นหลังแบบคงที่เพื่อไม่ให้กระพริบ */
         .fixed-bg {
             position: fixed;
             top: 0; left: 0; width: 100%; height: 100%;
-            background: linear-gradient(135deg, #fffcf0 0%, #F9F6C4 50%, #e0f4ff 100%);
+            background: #F9F4E8;
             z-index: -3;
         }
 
@@ -42,63 +41,72 @@
         .floating-emoji { position: absolute; font-size: 20px; opacity: 0; filter: blur(1px); animation: fallEmoji linear infinite; }
         @keyframes fallEmoji {
             0% { transform: translateY(-10vh) rotate(0deg); opacity: 0; }
-            10% { opacity: 0.5; }
-            90% { opacity: 0.5; }
+            10% { opacity: 0.3; }
+            90% { opacity: 0.3; }
             100% { transform: translateY(110vh) rotate(360deg); opacity: 0; }
         }
 
-        /* แสงฟุ้งรอบพื้นหลัง */
+        /* แสงฟุ้งรอบพื้นหลังปรับโทนให้นุ่มขึ้น */
         body::before, body::after {
             content: ''; position: fixed; width: 300px; height: 300px; border-radius: 50%;
-            background: var(--primary); filter: blur(100px); opacity: 0.15; z-index: -1;
+            background: #A89B9B; filter: blur(120px); opacity: 0.1; z-index: -1;
             animation: floatGlow 12s infinite alternate;
         }
         body::before { top: -50px; left: -100px; }
-        body::after { bottom: -50px; right: -100px; background: var(--accent); }
+        body::after { bottom: -50px; right: -100px; background: #74645E; }
         @keyframes floatGlow { from { transform: translate(0, 0); } to { transform: translate(40px, 40px); } }
 
         .container { max-width: 500px; margin: 0 auto; padding: 20px 15px 100px; position: relative; z-index: 1; }
 
+        /* Profile Card - ปรับขอบเป็นสีเทา */
         .profile-card {
             background: var(--glass); backdrop-filter: blur(10px); border-radius: 30px;
-            padding: 40px 20px; text-align: center; border: 2px solid var(--primary);
-            box-shadow: var(--border-glow); margin-bottom: 25px;
+            padding: 40px 20px; text-align: center; border: 1.5px solid var(--secondary);
+            box-shadow: var(--shadow); margin-bottom: 25px;
         }
 
         .profile-img {
             width: 120px; height: 120px; border-radius: 50%; border: 3px solid #fff;
-            box-shadow: 0 4px 15px rgba(254, 158, 199, 0.3); margin-bottom: 15px; object-fit: cover;
+            box-shadow: 0 4px 15px rgba(116, 100, 94, 0.2); margin-bottom: 15px; object-fit: cover;
             cursor: zoom-in;
         }
 
-        .profile-card h1 { font-size: 24px; color: var(--primary); margin-bottom: 10px; }
-        .profile-card p { font-size: 14px; line-height: 1.6; color: #777; }
+        .profile-card h1 { font-size: 24px; color: var(--text-dark); margin-bottom: 10px; font-weight: 500; }
+        .profile-card p { font-size: 14px; line-height: 1.6; color: #8e7f7a; }
 
+        /* Status Badge */
         .status-badge {
             display: inline-block; background: #fff; padding: 5px 15px; border-radius: 20px;
-            font-size: 12px; color: var(--primary); border: 1.5px solid var(--primary);
+            font-size: 12px; color: var(--text-dark); border: 1px solid var(--secondary);
             margin-top: 10px; font-weight: 500;
         }
 
-        .section-title { font-size: 18px; margin: 25px 0 15px 10px; display: flex; align-items: center; gap: 10px; color: var(--primary); }
+        /* Section Title - สีน้ำตาลเข้ม */
+        .section-title { font-size: 18px; margin: 25px 0 15px 10px; display: flex; align-items: center; gap: 10px; color: var(--text-dark); font-weight: 500; }
+        .section-title i { color: var(--secondary); }
+
         .service-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 15px; }
+        
+        /* Service Card */
         .service-card {
             background: #fff; border-radius: 20px; padding: 15px; text-align: center;
             box-shadow: 0 4px 15px rgba(0,0,0,0.03); transition: 0.3s; text-decoration: none;
-            color: inherit; border: 1.5px solid var(--secondary);
+            color: var(--text-dark); border: 1px solid #eee;
         }
-        .service-card:active { transform: scale(0.95); border-color: var(--accent); box-shadow: 0 0 10px rgba(137, 212, 255, 0.4); }
-        .service-card i { font-size: 24px; color: var(--accent); margin-bottom: 10px; display: block; }
+        .service-card:active { transform: scale(0.95); border-color: var(--secondary); box-shadow: var(--border-glow); }
+        .service-card i { font-size: 24px; color: var(--secondary); margin-bottom: 10px; display: block; }
         .service-card span { font-size: 14px; font-weight: 500; }
 
+        /* Link Items */
         .link-item {
             background: #fff; border-radius: 18px; padding: 15px 20px; margin-bottom: 12px;
             display: flex; align-items: center; text-decoration: none; color: var(--text-dark);
-            border: 1.5px solid transparent; box-shadow: 0 4px 10px rgba(0,0,0,0.02); transition: 0.3s;
+            border: 1px solid transparent; box-shadow: 0 4px 10px rgba(0,0,0,0.02); transition: 0.3s;
         }
-        .link-item:hover { background: #fffdf0; transform: translateX(5px); border-color: var(--primary); box-shadow: var(--border-glow); }
-        .link-item i { width: 35px; color: var(--accent); font-size: 18px; }
+        .link-item:hover { background: #fdfbf7; transform: translateX(5px); border-color: var(--secondary); box-shadow: var(--border-glow); }
+        .link-item i { width: 35px; color: var(--secondary); font-size: 18px; }
 
+        /* Image Scroller */
         .scroll-wrapper { display: flex; overflow-x: auto; gap: 12px; padding: 10px 5px 20px; scroll-snap-type: x mandatory; scrollbar-width: none; }
         .scroll-wrapper::-webkit-scrollbar { display: none; }
         .image-card {
@@ -109,54 +117,51 @@
         .image-card img { width: 100%; height: 100%; object-fit: cover; }
 
         .game-label {
-            font-size: 14px; font-weight: 500; color: var(--primary); margin: 15px 0 5px 15px;
+            font-size: 14px; font-weight: 500; color: var(--text-dark); margin: 15px 0 5px 15px;
             background: #fff; display: inline-block; padding: 2px 12px; border-radius: 10px; border: 1px solid var(--secondary);
         }
 
+        /* Navbar - ปรับสีใหม่ */
         .navbar {
             position: fixed; bottom: 20px; left: 50%; transform: translateX(-50%);
-            width: 94%; max-width: 480px; background: rgba(255, 255, 255, 0.9);
+            width: 94%; max-width: 480px; background: rgba(255, 255, 255, 0.95);
             backdrop-filter: blur(15px); border-radius: 25px; display: flex;
-            justify-content: space-around; padding: 10px 5px; border: 2px solid var(--primary);
-            box-shadow: var(--border-glow); z-index: 1000;
+            justify-content: space-around; padding: 10px 5px; border: 1.5px solid var(--secondary);
+            box-shadow: 0 10px 30px rgba(116, 100, 94, 0.1); z-index: 1000;
         }
-        .nav-link { text-decoration: none; color: #ccc; font-size: 18px; padding: 8px 12px; border-radius: 15px; transition: 0.3s; display: flex; flex-direction: column; align-items: center; gap: 2px; }
+        .nav-link { text-decoration: none; color: #c4b9b9; font-size: 18px; padding: 8px 12px; border-radius: 15px; transition: 0.3s; display: flex; flex-direction: column; align-items: center; gap: 2px; }
         .nav-link span { font-size: 10px; font-weight: 500; }
-        .nav-link.active { color: var(--primary); background: #fffef0; border: 1px solid var(--secondary); }
+        .nav-link.active { color: var(--text-dark); background: #fdfbf7; border: 1px solid var(--secondary); }
 
-        /* --- Updated Smooth Image Modal --- */
+        /* Modal - ขอบขาวเงาสีน้ำตาล */
         .modal {
             display: none; position: fixed; z-index: 9999; top: 0; left: 0; width: 100%; height: 100%;
-            background-color: rgba(255, 255, 255, 0.4); backdrop-filter: blur(12px);
+            background-color: rgba(249, 244, 232, 0.6); backdrop-filter: blur(12px);
             justify-content: center; align-items: center; opacity: 0; transition: opacity 0.3s ease;
         }
         .modal.show { opacity: 1; display: flex; }
         .modal-content {
             max-width: 90%; max-height: 80%; border-radius: 20px;
-            box-shadow: 0 10px 40px rgba(254, 158, 199, 0.4);
+            box-shadow: 0 10px 40px rgba(116, 100, 94, 0.2);
             border: 4px solid #fff; object-fit: contain; transform: scale(0.7);
             transition: transform 0.4s cubic-bezier(0.165, 0.84, 0.44, 1);
         }
         .modal.show .modal-content { transform: scale(1); }
         .close-modal {
             position: absolute; top: 30px; right: 25px; color: #fff; font-size: 24px;
-            cursor: pointer; background: var(--primary); width: 40px; height: 40px;
+            cursor: pointer; background: var(--text-dark); width: 40px; height: 40px;
             border-radius: 50%; display: flex; justify-content: center; align-items: center;
             box-shadow: 0 4px 10px rgba(0,0,0,0.1); z-index: 10001;
         }
 
         .page { display: none; animation: fadeIn 0.4s ease; }
         .page.active { display: block; }
-        @keyframes fadeIn { 
-            from { opacity: 0; transform: translateY(5px); } 
-            to { opacity: 1; transform: translateY(0); } 
-        }
+        @keyframes fadeIn { from { opacity: 0; transform: translateY(5px); } to { opacity: 1; transform: translateY(0); } }
     </style>
 </head>
 <body>
 
 <div class="fixed-bg"></div>
-
 <div class="emoji-bg" id="emojiContainer"></div>
 
 <div id="imageModal" class="modal" onclick="closeModal()">
@@ -169,7 +174,7 @@
     <div id="home" class="page active">
         <div class="profile-card">
             <img src="logo.png" class="profile-img" alt="Julylynchu" onclick="openModal(this.src)">
-            <h1>Julylynchu 🎀</h1>
+            <h1>Julylynchu 🍪</h1>
             <p>Welcome to my store!<br>รับเติมเกม • ปล่อยเช่า • จำหน่ายแอพพรี • ดันขายไอดี</p>
             <div class="status-badge">เปิดให้บริการ 09:00 - 00:00</div>
         </div>
@@ -220,7 +225,7 @@
             <div class="image-card"><img src="sell_mlbb2.jpg" alt="Sell MLBB 2" onclick="openModal(this.src)"></div>
         </div>
         <div class="profile-card" style="margin-top: 20px; padding: 20px; background: rgba(255,255,255,0.6);">
-            <p style="font-size: 13px; color: var(--primary);">✨ สนใจซื้อไอดีไหน แคปรูปทักแชทจูได้เลยนะคะ</p>
+            <p style="font-size: 13px;">✨ สนใจซื้อไอดีไหน แคปรูปทักแชทจูได้เลยนะคะ</p>
         </div>
     </div>
 
@@ -242,7 +247,7 @@
         <a href="https://line.ee/qjPOQ0V" class="link-item"><i class="fab fa-line"></i> LINE Official</a>
         <a href="https://www.facebook.com/profile.php?id=61586046260927" class="link-item"><i class="fab fa-facebook"></i> Facebook</a>
         <div class="profile-card" style="margin-top: 30px; padding: 20px;">
-            <p style="color: var(--primary); font-weight: 500;">⚠️ กฎของร้าน</p>
+            <p style="color: var(--text-dark); font-weight: 500;">🧺 กฎของร้าน</p>
             <p style="font-size: 13px;">หากโอนเงินแล้วไม่คืนเงินทุกกรณี<br>จอง = โอน เท่านั้นนะคะ</p>
         </div>
     </div>
@@ -286,7 +291,7 @@
 
     function createEmojis() {
         const container = document.getElementById('emojiContainer');
-        const emojis = ['🌸'];
+        const emojis = ['☁️'];
         const emojiCount = 15;
         for (let i = 0; i < emojiCount; i++) {
             const emoji = document.createElement('div');
