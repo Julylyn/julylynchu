@@ -28,7 +28,6 @@
             overflow-x: hidden;
         }
 
-        /* พื้นหลังแบบคงที่เพื่อไม่ให้กระพริบ */
         .fixed-bg {
             position: fixed;
             top: 0; left: 0; width: 100%; height: 100%;
@@ -36,7 +35,6 @@
             z-index: -3;
         }
 
-        /* --- Floating Emoji Background --- */
         .emoji-bg { position: fixed; top: 0; left: 0; width: 100%; height: 100%; z-index: -2; pointer-events: none; }
         .floating-emoji { position: absolute; font-size: 20px; opacity: 0; filter: blur(1px); animation: fallEmoji linear infinite; }
         @keyframes fallEmoji {
@@ -46,23 +44,14 @@
             100% { transform: translateY(110vh) rotate(360deg); opacity: 0; }
         }
 
-        /* --- ปรับเพิ่มแสงฟุ้งรอบพื้นหลังให้หนาและนุ่มขึ้น --- */
         body::before, body::after {
-            content: ''; position: fixed; 
-            /* เพิ่มขนาดวงกลมแสงให้ใหญ่ขึ้น */
-            width: 500px; height: 500px; 
-            border-radius: 50%;
-            background: #A89B9B; 
-            /* เพิ่มความกว้างของระยะเบลอ */
-            filter: blur(150px); 
-            /* ปรับความเข้มแสงให้พอดี */
-            opacity: 0.12; 
-            z-index: -1;
-            animation: floatGlow 15s infinite alternate; /* ปรับแอนิเมชั่นให้ช้าลงเล็กน้อย */
+            content: ''; position: fixed; width: 300px; height: 300px; border-radius: 50%;
+            background: #A89B9B; filter: blur(120px); opacity: 0.1; z-index: -1;
+            animation: floatGlow 12s infinite alternate;
         }
-        body::before { top: -100px; left: -150px; } /* ปรับตำแหน่งเล็กน้อยให้ครอบคลุม */
-        body::after { bottom: -100px; right: -150px; background: #74645E; }
-        @keyframes floatGlow { from { transform: translate(0, 0); } to { transform: translate(60px, 60px); } } /* เพิ่มระยะการขยับ */
+        body::before { top: -50px; left: -100px; }
+        body::after { bottom: -50px; right: -100px; background: #74645E; }
+        @keyframes floatGlow { from { transform: translate(0, 0); } to { transform: translate(40px, 40px); } }
 
         .container { max-width: 500px; margin: 0 auto; padding: 20px 15px 100px; position: relative; z-index: 1; }
 
@@ -91,6 +80,7 @@
         .section-title i { color: var(--secondary); }
 
         .service-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 15px; }
+        
         .service-card {
             background: #fff; border-radius: 20px; padding: 15px; text-align: center;
             box-shadow: 0 4px 15px rgba(0,0,0,0.03); transition: 0.3s; text-decoration: none;
@@ -103,7 +93,7 @@
         .link-item {
             background: #fff; border-radius: 18px; padding: 15px 20px; margin-bottom: 12px;
             display: flex; align-items: center; text-decoration: none; color: var(--text-dark);
-            border: 1px solid transparent; box-shadow: 0 4px 10px rgba(0,0,0,0.02); transition: 0.3s;
+            border: 1.5px solid transparent; box-shadow: 0 4px 10px rgba(0,0,0,0.02); transition: 0.3s;
         }
         .link-item:hover { background: #fdfbf7; transform: translateX(5px); border-color: var(--secondary); box-shadow: var(--border-glow); }
         .link-item i { width: 35px; color: var(--secondary); font-size: 18px; }
@@ -124,12 +114,12 @@
 
         .navbar {
             position: fixed; bottom: 20px; left: 50%; transform: translateX(-50%);
-            width: 94%; max-width: 480px; background: rgba(255, 255, 255, 0.95);
+            width: 90%; max-width: 400px; background: rgba(255, 255, 255, 0.95);
             backdrop-filter: blur(15px); border-radius: 25px; display: flex;
             justify-content: space-around; padding: 10px 5px; border: 1.5px solid var(--secondary);
             box-shadow: 0 10px 30px rgba(116, 100, 94, 0.1); z-index: 1000;
         }
-        .nav-link { text-decoration: none; color: #c4b9b9; font-size: 18px; padding: 8px 12px; border-radius: 15px; transition: 0.3s; display: flex; flex-direction: column; align-items: center; gap: 2px; }
+        .nav-link { text-decoration: none; color: #c4b9b9; font-size: 18px; padding: 8px 12px; border-radius: 15px; transition: 0.3s; display: flex; flex-direction: column; align-items: center; gap: 2px; flex: 1; }
         .nav-link span { font-size: 10px; font-weight: 500; }
         .nav-link.active { color: var(--text-dark); background: #fdfbf7; border: 1px solid var(--secondary); }
 
@@ -184,7 +174,15 @@
             <a href="#" onclick="switchTab('sell')" class="service-card"><i class="fas fa-tags"></i><span>Sell ID</span></a>
             <a href="#" onclick="switchTab('shop')" class="service-card"><i class="fas fa-bolt"></i><span>Top up</span></a>
             <a href="#" onclick="switchTab('shop')" class="service-card"><i class="fas fa-mobile-alt"></i><span>App premium</span></a>
-            <a href="#" onclick="switchTab('contact')" class="service-card"><i class="fas fa-headset"></i><span>Contact</span></a>
+        </div>
+
+        <div class="section-title" style="margin-top: 35px;"><i class="fas fa-comments"></i> ช่องทางติดต่อ</div>
+        <a href="https://line.ee/qjPOQ0V" class="link-item"><i class="fab fa-line"></i> LINE Official</a>
+        <a href="https://www.facebook.com/profile.php?id=61586046260927" class="link-item"><i class="fab fa-facebook"></i> Facebook</a>
+        
+        <div class="profile-card" style="margin-top: 30px; padding: 20px;">
+            <p style="color: var(--text-dark); font-weight: 500;">🧺 กฎของร้าน</p>
+            <p style="font-size: 13px;">หากโอนเงินแล้วไม่คืนเงินทุกกรณี<br>จอง = โอน เท่านั้นนะคะ</p>
         </div>
     </div>
 
@@ -241,16 +239,6 @@
         <a href="#" class="link-item"><i class="fas fa-film"></i> Netflix Profile</a>
     </div>
 
-    <div id="contact" class="page">
-        <div class="section-title"><i class="fas fa-comments"></i> ช่องทางติดต่อ</div>
-        <a href="https://line.ee/qjPOQ0V" class="link-item"><i class="fab fa-line"></i> LINE Official</a>
-        <a href="https://www.facebook.com/profile.php?id=61586046260927" class="link-item"><i class="fab fa-facebook"></i> Facebook</a>
-        <div class="profile-card" style="margin-top: 30px; padding: 20px;">
-            <p style="color: var(--text-dark); font-weight: 500;">🧺 กฎของร้าน</p>
-            <p style="font-size: 13px;">หากโอนเงินแล้วไม่คืนเงินทุกกรณี<br>จอง = โอน เท่านั้นนะคะ</p>
-        </div>
-    </div>
-
 </div>
 
 <nav class="navbar">
@@ -258,7 +246,6 @@
     <a href="#" class="nav-link" onclick="switchTab('rent')"><i class="fas fa-gamepad"></i><span>Rent</span></a>
     <a href="#" class="nav-link" onclick="switchTab('sell')"><i class="fas fa-tags"></i><span>Sell ID</span></a>
     <a href="#" class="nav-link" onclick="switchTab('shop')"><i class="fas fa-store"></i><span>Shop</span></a>
-    <a href="#" class="nav-link" onclick="switchTab('contact')"><i class="fas fa-user"></i><span>Contact</span></a>
 </nav>
 
 <script>
