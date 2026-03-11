@@ -59,6 +59,7 @@
         .profile-img {
             width: 120px; height: 120px; border-radius: 50%; border: 3px solid #fff;
             box-shadow: 0 4px 15px rgba(0,0,0,0.1); margin-bottom: 15px; object-fit: cover;
+            cursor: zoom-in;
         }
 
         .profile-card h1 { font-size: 24px; color: var(--accent); margin-bottom: 10px; }
@@ -97,7 +98,6 @@
             box-shadow: 0 4px 15px rgba(0,0,0,0.05); transition: 0.3s; cursor: zoom-in;
         }
         .image-card img { width: 100%; height: 100%; object-fit: cover; }
-        .image-card:active { transform: scale(0.98); }
 
         .game-label {
             font-size: 14px; font-weight: 500; color: var(--accent); margin: 15px 0 5px 15px;
@@ -115,41 +115,49 @@
         .nav-link span { font-size: 10px; font-weight: 500; }
         .nav-link.active { color: var(--accent); background: var(--secondary); }
 
-        .page { display: none; animation: fadeIn 0.4s ease; }
-        .page.active { display: block; }
-        @keyframes fadeIn { from { opacity: 0; transform: translateY(10px); } to { opacity: 1; transform: translateY(0); } }
-
-        /* --- Image Modal Styles --- */
+        /* --- Updated Smooth Image Modal --- */
         .modal {
             display: none;
             position: fixed;
             z-index: 9999;
             top: 0; left: 0; width: 100%; height: 100%;
-            background-color: rgba(0, 0, 0, 0.85);
-            backdrop-filter: blur(5px);
+            background-color: rgba(255, 255, 255, 0.4); /* แบบใส ดูคลีน */
+            backdrop-filter: blur(12px); /* เพิ่มความเบลอให้ดูแพง */
             justify-content: center;
             align-items: center;
-            animation: fadeIn 0.3s ease;
+            opacity: 0;
+            transition: opacity 0.3s ease;
         }
+        .modal.show { opacity: 1; display: flex; }
+        
         .modal-content {
             max-width: 90%;
             max-height: 80%;
-            border-radius: 15px;
-            box-shadow: 0 0 30px rgba(255, 153, 204, 0.5);
-            border: 3px solid #fff;
+            border-radius: 20px;
+            box-shadow: var(--shadow);
+            border: 4px solid #fff;
             object-fit: contain;
+            transform: scale(0.7); /* เริ่มต้นจากขนาดเล็ก */
+            transition: transform 0.4s cubic-bezier(0.165, 0.84, 0.44, 1); /* สมูทเบเซียร์ */
         }
+        .modal.show .modal-content { transform: scale(1); } /* ขยายออกมา */
+
         .close-modal {
             position: absolute;
-            top: 20px; right: 20px;
-            color: #fff; font-size: 30px;
+            top: 30px; right: 25px;
+            color: #fff; font-size: 24px;
             cursor: pointer;
             background: var(--accent);
-            width: 45px; height: 45px;
+            width: 40px; height: 40px;
             border-radius: 50%;
             display: flex; justify-content: center; align-items: center;
-            box-shadow: 0 0 15px rgba(0,0,0,0.3);
+            box-shadow: 0 4px 10px rgba(0,0,0,0.1);
+            z-index: 10001;
         }
+
+        .page { display: none; animation: fadeIn 0.4s ease; }
+        .page.active { display: block; }
+        @keyframes fadeIn { from { opacity: 0; transform: translateY(10px); } to { opacity: 1; transform: translateY(0); } }
     </style>
 </head>
 <body>
@@ -157,7 +165,7 @@
 <div class="emoji-bg" id="emojiContainer"></div>
 
 <div id="imageModal" class="modal" onclick="closeModal()">
-    <span class="close-modal">&times;</span>
+    <span class="close-modal"><i class="fas fa-times"></i></span>
     <img class="modal-content" id="fullImage">
 </div>
 
@@ -267,22 +275,35 @@
         window.scrollTo({ top: 0, behavior: 'smooth' });
     }
 
-    /* --- Image Modal Functions --- */
+    /* --- Updated Smooth Modal Functions --- */
     function openModal(imgSrc) {
         const modal = document.getElementById('imageModal');
         const modalImg = document.getElementById('fullImage');
-        modal.style.display = "flex";
+        
         modalImg.src = imgSrc;
+        modal.style.display = "flex";
+        
+        // ใช้ setTimeout เพื่อให้แอนิเมชั่น Transition ทำงานหลังจาก display เปลี่ยนเป็น flex
+        setTimeout(() => {
+            modal.classList.add('show');
+        }, 10);
     }
 
     function closeModal() {
-        document.getElementById('imageModal').style.display = "none";
+        const modal = document.getElementById('imageModal');
+        modal.classList.remove('show');
+        
+        // รอให้แอนิเมชั่นจบก่อนค่อยซ่อน element
+        setTimeout(() => {
+            modal.style.display = "none";
+        }, 300);
     }
 
     function createEmojis() {
         const container = document.getElementById('emojiContainer');
         const emojis = ['🌸'];
-        for (let i = 0; i < 15; i++) {
+        const emojiCount = 15;
+        for (let i = 0; i < emojiCount; i++) {
             const emoji = document.createElement('div');
             emoji.className = 'floating-emoji';
             emoji.innerText = emojis[0];
@@ -292,7 +313,6 @@
             container.appendChild(emoji);
         }
     }
-
     createEmojis();
 </script>
 
