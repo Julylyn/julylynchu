@@ -1,417 +1,299 @@
 <!DOCTYPE html>
 <html lang="th">
 <head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Julylynchu - Official Store</title>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Julylynchu - Official Store</title>
+    <link href="https://fonts.googleapis.com/css2?family=Mitr:wght@300;400;500&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    
+    <style>
+        :root {
+            --primary: #ff99cc;
+            --secondary: #fce4ec;
+            --accent: #ff66aa;
+            --text-dark: #5d4037;
+            --glass: rgba(255, 255, 255, 0.85);
+            --shadow: 0 8px 32px 0 rgba(255, 153, 204, 0.2);
+        }
 
-<link href="https://fonts.googleapis.com/css2?family=Mitr:wght@300;400;500&display=swap" rel="stylesheet">
+        * { margin: 0; padding: 0; box-sizing: border-box; font-family: 'Mitr', sans-serif; }
 
-<style>
-:root{
---bg:#F8F0FB; 
---main:#D499E0;
---dark:#7B1FA2;
---white:#FFFFFF;
---glow:rgba(212, 153, 224, 0.5);
---soft-purple: #F3E5F5;
-}
+        body {
+            background: linear-gradient(135deg, #fdf2f8 0%, #fce4ec 100%);
+            background-attachment: fixed;
+            color: var(--text-dark);
+            min-height: 100vh;
+        }
 
-*{margin:0;padding:0;box-sizing:border-box;font-family:'Mitr',sans-serif;}
+        /* Background Animation */
+        .bg-dots {
+            position: fixed;
+            top: 0; left: 0; width: 100%; height: 100%;
+            z-index: -1;
+            background-image: radial-gradient(var(--primary) 0.5px, transparent 0.5px);
+            background-size: 30px 30px;
+            opacity: 0.2;
+        }
 
-body{
-background:var(--bg);
-display:flex;
-justify-content:center;
-position: relative;
-overflow-x: hidden;
-}
+        .container {
+            max-width: 500px;
+            margin: 0 auto;
+            padding: 20px 15px 100px;
+        }
 
-body::before {
-content: "";
-position: fixed;
-top: -10vh; left: 0; width: 100%; height: 110vh;
-z-index: -1;
-background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='200' height='200' viewBox='0 0 100 100'%3E%3Ctext y='30' x='20' font-size='8' opacity='0.3'%3E%E2%AD%90%3C/text%3E%3Ctext y='70' x='80' font-size='6' opacity='0.2'%3E%E2%AD%90%3C/text%3E%3C/svg%3E");
-background-size: 200px 200px;
-animation: snowfall 45s linear infinite; 
-}
+        /* Header Section */
+        .profile-card {
+            background: var(--glass);
+            backdrop-filter: blur(10px);
+            border-radius: 30px;
+            padding: 40px 20px;
+            text-align: center;
+            border: 2px solid #fff;
+            box-shadow: var(--shadow);
+            margin-bottom: 25px;
+        }
 
-@keyframes snowfall {
-from { background-position: 0 0; }
-to { background-position: 0 110vh; }
-}
+        .profile-img {
+            width: 120px;
+            height: 120px;
+            border-radius: 50%;
+            border: 5px solid #fff;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+            margin-bottom: 15px;
+            object-fit: cover;
+        }
 
-.container{
-max-width:500px;
-width:100%;
-padding:20px 15px 100px; 
-position: relative; z-index: 1;
-}
+        .profile-card h1 { font-size: 24px; color: var(--accent); margin-bottom: 10px; }
+        .profile-card p { font-size: 14px; line-height: 1.6; color: #888; }
 
-.section{
-background: rgba(255, 255, 255, 0.95);
-border-radius:24px;
-padding:25px 20px;
-margin-bottom:20px;
-box-shadow: 0 10px 25px rgba(212, 153, 224, 0.12);
-border: 1.5px solid rgba(212, 153, 224, 0.25);
-position: relative;
-overflow: hidden;
-}
+        /* Status Badge */
+        .status-badge {
+            display: inline-block;
+            background: #fff;
+            padding: 5px 15px;
+            border-radius: 20px;
+            font-size: 12px;
+            color: var(--accent);
+            border: 1px solid var(--primary);
+            margin-top: 10px;
+        }
 
-h1{ color:var(--dark); font-weight: 500; font-size: 28px; text-shadow: 2px 2px 4px var(--glow); }
-h2{ color:var(--dark); font-size: 18px; font-weight: 500; display: flex; align-items: center; gap: 8px; }
-.center{text-align:center;}
+        /* Content Sections */
+        .section-title {
+            font-size: 18px;
+            margin: 25px 0 15px 10px;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            color: var(--accent);
+        }
 
-.logo{
-width:150px;height:150px;
-border-radius:50%;
-overflow:hidden;
-margin:0 auto 20px;
-box-shadow: 0 0 20px var(--glow);
-border: 4px solid #fff;
-}
+        /* Grid Items */
+        .service-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 15px;
+        }
 
-.logo img{width:100%;height:100%;object-fit:cover;}
+        .service-card {
+            background: #fff;
+            border-radius: 20px;
+            padding: 15px;
+            text-align: center;
+            box-shadow: 0 4px 15px rgba(0,0,0,0.03);
+            transition: 0.3s;
+            text-decoration: none;
+            color: inherit;
+            border: 1px solid transparent;
+        }
 
-.badges{
-display:flex;
-flex-wrap:wrap;
-justify-content:center;
-gap:8px;
-margin-bottom:20px;
-}
+        .service-card:active { transform: scale(0.95); border-color: var(--primary); }
+        .service-card i { font-size: 24px; color: var(--primary); margin-bottom: 10px; display: block; }
+        .service-card span { font-size: 14px; font-weight: 500; }
 
-.badge{
-background:#fff;
-padding:6px 14px;
-border-radius:20px;
-box-shadow: 0 4px 12px var(--glow);
-font-size:13px;
-color:var(--dark);
-border: 1px solid var(--soft-purple);
-}
+        /* Buttons & Links */
+        .link-item {
+            background: #fff;
+            border-radius: 18px;
+            padding: 15px 20px;
+            margin-bottom: 12px;
+            display: flex;
+            align-items: center;
+            text-decoration: none;
+            color: var(--text-dark);
+            box-shadow: 0 4px 10px rgba(0,0,0,0.02);
+            transition: 0.3s;
+            border: 1px solid rgba(255,255,255,0.5);
+        }
 
-.btn{
-display:block;
-text-align:center;
-padding:14px;
-border-radius:30px;
-text-decoration:none;
-margin-top:15px;
-font-weight:500;
-transition: 0.3s;
-}
+        .link-item:hover { background: var(--secondary); transform: translateX(5px); }
+        .link-item i { width: 35px; color: var(--accent); font-size: 18px; }
 
-.btn-outline{
-background: #fff;
-border: 2px dashed var(--main);
-color: var(--dark);
-}
+        /* Image Scroller */
+        .scroll-wrapper {
+            display: flex;
+            overflow-x: auto;
+            gap: 12px;
+            padding: 5px 5px 15px;
+            scroll-snap-type: x mandatory;
+            scrollbar-width: none;
+        }
+        .scroll-wrapper::-webkit-scrollbar { display: none; }
 
-.btn-main{
-background: linear-gradient(135deg, var(--main), #B388FF);
-color:#fff;
-box-shadow: 0 6px 20px var(--glow);
-}
+        .image-card {
+            flex: 0 0 180px;
+            height: 240px;
+            background: #eee;
+            border-radius: 15px;
+            overflow: hidden;
+            scroll-snap-align: start;
+            box-shadow: 0 4px 10px rgba(0,0,0,0.1);
+        }
+        .image-card img { width: 100%; height: 100%; object-fit: cover; }
 
-.step{
-display:flex;
-align-items:center;
-gap:12px;
-margin-bottom:12px;
-}
+        /* Bottom Nav */
+        .navbar {
+            position: fixed;
+            bottom: 20px;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 90%;
+            max-width: 400px;
+            background: rgba(255, 255, 255, 0.9);
+            backdrop-filter: blur(15px);
+            border-radius: 25px;
+            display: flex;
+            justify-content: space-around;
+            padding: 10px;
+            box-shadow: 0 10px 25px rgba(0,0,0,0.1);
+            border: 1px solid #fff;
+            z-index: 1000;
+        }
 
-.step-num{
-background: var(--main);
-color:#fff;
-width:26px;height:26px;
-border-radius:50%;
-display:flex;
-align-items:center;
-justify-content:center;
-font-size:13px;
-}
+        .nav-link {
+            text-decoration: none;
+            color: #ccc;
+            font-size: 20px;
+            padding: 8px 15px;
+            border-radius: 15px;
+            transition: 0.3s;
+        }
 
-.scroll-container {
-display: flex;
-overflow-x: auto;
-gap: 15px;
-padding: 10px 5px 15px;
-scroll-snap-type: x mandatory;
-scrollbar-width: thin;
-scrollbar-color: var(--main) transparent;
-cursor: grab;
--webkit-overflow-scrolling: touch;
-}
+        .nav-link.active { color: var(--accent); background: var(--secondary); }
 
-.scroll-container::-webkit-scrollbar { height: 4px; }
-.scroll-container::-webkit-scrollbar-thumb { background: var(--main); border-radius: 10px; }
-.scroll-container:active { cursor: grabbing; }
+        /* Pages */
+        .page { display: none; animation: fadeIn 0.4s ease; }
+        .page.active { display: block; }
 
-.product-card {
-flex: 0 0 80%;
-aspect-ratio: 1/1;
-background: #fdfbff;
-border-radius: 18px;
-overflow: hidden;
-scroll-snap-align: center;
-border: 1px solid var(--soft-purple);
-transition: transform 0.2s;
-}
-
-.product-card a {
-    display: block;
-    width: 100%;
-    height: 100%;
-    text-decoration: none;
-}
-
-.product-card img { 
-    width: 100%; 
-    height: 100%; 
-    object-fit: cover; 
-    pointer-events: none;
-}
-
-.product-card:active { transform: scale(0.98); }
-
-.footer{ text-align:center; margin-top:10px; }
-
-.socials{ display:flex; gap:10px; justify-content:center; margin-top:15px; }
-
-.socials a{
-flex:1; max-width:150px; text-align:center; padding:12px;
-border-radius:25px; background:#fff; text-decoration:none;
-color:var(--dark); font-size:14px; border: 1px solid var(--soft-purple);
-}
-
-.small{font-size:12px;opacity:.6;margin-top:15px;}
-
-/* --- Bottom Navigation Styles --- */
-.bottom-nav {
-position: fixed;
-bottom: 0; left: 50%;
-transform: translateX(-50%);
-width: 100%;
-max-width: 500px;
-background: rgba(255, 255, 255, 0.98);
-display: flex;
-justify-content: space-around;
-padding: 10px 0 25px;
-box-shadow: 0 -5px 20px rgba(0,0,0,0.05);
-border-top: 1px solid var(--soft-purple);
-z-index: 9999;
-border-radius: 25px 25px 0 0;
-}
-
-.nav-item {
-display: flex;
-flex-direction: column;
-align-items: center;
-text-decoration: none;
-color: #A0A0A0;
-font-size: 11px;
-transition: 0.3s;
-cursor: pointer;
-flex: 1;
-}
-
-.nav-item.active { color: var(--dark); }
-
-/* สไตล์ไอคอนรูปภาพ */
-.nav-icon {
-    width: 24px;
-    height: 24px;
-    margin-bottom: 4px;
-    opacity: 0.4; /* จางลงเมื่อไม่ถูกเลือก */
-    transition: 0.3s;
-    object-fit: contain;
-}
-
-.nav-item.active .nav-icon {
-    opacity: 1; /* ชัดเจนเมื่อถูกเลือก */
-    filter: drop-shadow(0 0 5px var(--glow));
-}
-
-.page { display: none; animation: fadeIn 0.4s ease; }
-.page.active { display: block; }
-
-@keyframes fadeIn {
-from { opacity: 0; transform: translateY(10px); }
-to { opacity: 1; transform: translateY(0); }
-}
-</style>
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(10px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+    </style>
 </head>
 <body>
 
+<div class="bg-dots"></div>
+
 <div class="container">
-
+    
     <div id="home" class="page active">
-        <div class="section center" style="border:none;box-shadow:none;background:transparent;">
-            <div class="logo"><img src="logo.png" alt="Logo"></div>
-            <h1>Julylynchu</h1>
-            <div style="color:var(--dark);opacity:.9;margin:15px 0 25px; white-space: pre-line; line-height: 1.6;">
-                🥣 ⌇𝚆𝚎𝚕𝚌𝚘𝚖𝚎 𝚝𝚘 𝚖𝚢 𝚜𝚑𝚘𝚙
-                𓂂◟✿ จูรับเติมเกม𓈒ปล่อยเช่า𓈒ดันขาย𓈒จำหน่ายแอพพรี 💌
-                สนใจรายการไหนสามารถแคปไปแจ้งจูได้เลยน้า 💖
-
-                 ྀི︶˚̣̣̣⠀⠀⠀(⁠ᗒ⩊ᗕ ྀི)⠀⠀⠀˚̣̣̣︶ ྀ
-            </div>
-            <div class="badges">
-                <div class="badge">รับเติมเกม</div>
-                <div class="badge">ปล่อยเช่ารหัส</div>
-                <div class="badge">จำหน่ายแอพพรี</div>
-                <div class="badge">ดันขายไอดี</div>
-            </div>
-            <a href="#" class="btn btn-outline" onclick="switchTab('rent')">Open-Close 09:00-00:00 ✨</a>
+        <div class="profile-card">
+            <img src="logo.png" class="profile-img" alt="Julylynchu">
+            <h1>Julylynchu 🎀</h1>
+            <p>Welcome to my store!<br>รับเติมเกม • ปล่อยเช่า • จำหน่ายแอพพรี</p>
+            <div class="status-badge">เปิดให้บริการ 09:00 - 00:00</div>
         </div>
 
-        <div class="section" style="background: linear-gradient(to bottom, #fff, #FFF9FA); border-color: #FFCDD2;">
-            <h2 class="center" style="color: #D32F2F; margin-bottom: 20px;">📍 กฎของร้าน 📍</h2>
-            <div class="step"><div class="step-num" style="background:#EF5350;">•</div><div style="font-weight: 500;">ถ้าโอนเงินแล้วทางร้านไม่คืนเงินทุกกรณีนะคะ</div></div>
-            <div class="step"><div class="step-num" style="background:#EF5350;">•</div><div style="font-weight: 500;">จอง = โอน หากยกเลิกภายหลังไม่มีคืนเงินใดๆ</div></div>
+        <div class="section-title"><i class="fas fa-star"></i> บริการของเรา</div>
+        <div class="service-grid">
+            <a href="#" onclick="switchTab('rent')" class="service-card">
+                <i class="fas fa-gamepad"></i>
+                <span>เช่ารหัสเกม</span>
+            </a>
+            <a href="#" onclick="switchTab('shop')" class="service-card">
+                <i class="fas fa-gem"></i>
+                <span>เติมเงินเกม</span>
+            </a>
+            <a href="#" onclick="switchTab('shop')" class="service-card">
+                <i class="fas fa-mobile-alt"></i>
+                <span>แอพพรีเมี่ยม</span>
+            </a>
+            <a href="#" onclick="switchTab('contact')" class="service-card">
+                <i class="fas fa-headset"></i>
+                <span>ติดต่อสอบถาม</span>
+            </a>
         </div>
     </div>
 
     <div id="rent" class="page">
-        <div class="section">
-            <h2>🎮 ปล่อยเช่ารหัส (ROV / MLBB / HOK)</h2>
-            <p style="margin: 10px 0 5px; font-size:14px; color:var(--dark); font-weight: 500;">• ROV</p>
-            <div class="scroll-container">
-                <div class="product-card"><a href="ใส่ลิ้งค์ที่นี่"><img src="rov1.jpg" alt="ID1"></a></div>
-                <div class="product-card"><a href="ใส่ลิ้งค์ที่นี่"><img src="mlbb1.jpg" alt="ID2"></a></div>
-            </div>
-            <p style="margin: 10px 0 5px; font-size:14px; color:var(--dark); font-weight: 500;">• MLBB เริ้มต้นชั่วโมงละ 25-35฿ เช่าขั้นต่ำ 2ชั่วโมง</p>
-            <div class="scroll-container">
-                <div class="product-card"><a href="ใส่ลิ้งค์ที่นี่"><img src="hok1.jpg" alt="ID1"></a></div>
-                <div class="product-card"><a href="ใส่ลิ้งค์ที่นี่"><img src="hok1.jpg" alt="ID2"></a></div>
-				<div class="product-card"><a href="ใส่ลิ้งค์ที่นี่"><img src="hok1.jpg" alt="ID3"></a></div>
-                <div class="product-card"><a href="ใส่ลิ้งค์ที่นี่"><img src="hok1.jpg" alt="ID4"></a></div>
-				<div class="product-card"><a href="ใส่ลิ้งค์ที่นี่"><img src="hok1.jpg" alt="ID5"></a></div>
-                <div class="product-card"><a href="ใส่ลิ้งค์ที่นี่"><img src="hok1.jpg" alt="ID6"></a></div>
-				<div class="product-card"><a href="ใส่ลิ้งค์ที่นี่"><img src="hok1.jpg" alt="ID7"></a></div>
-            </div>
-            <p style="margin: 10px 0 5px; font-size:14px; color:var(--dark); font-weight: 500;">• HOK</p>
-            <div class="scroll-container">
-                <div class="product-card"><a href="ใส่ลิ้งค์ที่นี่"><img src="hok1.jpg" alt="ID1"></a></div>
-                <div class="product-card"><a href="ใส่ลิ้งค์ที่นี่"><img src="hok1.jpg" alt="ID2"></a></div>
-            </div>
-            <a href="#" class="btn btn-main">เช็คคิวไอดี คลิก !</a>
+        <div class="section-title"><i class="fas fa-id-badge"></i> รหัสว่างพร้อมเช่า</div>
+        <div class="scroll-wrapper">
+            <div class="image-card"><img src="rov1.jpg" alt="ROV"></div>
+            <div class="image-card"><img src="mlbb1.jpg" alt="MLBB"></div>
+            <div class="image-card"><img src="hok1.jpg" alt="HOK"></div>
         </div>
-        <div class="section">
-            <h2>📋 ขั้นตอนการยืนยันตัวตน</h2>
-            <p style="margin-bottom:10px; font-size:14px; color:var(--dark); opacity: 0.8;">โปรดอ่านรายละเอียดก่อนเช่า</p>
-            <div class="scroll-container">
-                <div class="product-card"><a href="https://drive.google.com/file/d/1xnxxovsHvTmq360M17GzCJwC38Etj7To/view?usp=drive_link"><img src="uploads/rov.png" alt="วิธียืนยันตัวตน"></a></div>
-            </div>
-        </div>
+
+        <div class="section-title"><i class="fas fa-info-circle"></i> ขั้นตอนการเช่า</div>
+        <a href="#" class="link-item"><i class="fas fa-1"></i> เลือกรหัสที่ต้องการ</a>
+        <a href="#" class="link-item"><i class="fas fa-2"></i> ทักแชทเพื่อเช็คคิว</a>
+        <a href="#" class="link-item"><i class="fas fa-3"></i> โอนเงินและยืนยันตัวตน</a>
     </div>
 
     <div id="shop" class="page">
-        <div class="section">
-            <h2>💎 บริการเติมเกมกับจู</h2>
-            <div class="scroll-container">
-                <div class="product-card"><a href="https://drive.google.com/file/d/1PpguDnJg6N7tyHT0_KqD-8CHuX8nSkij/view?usp=drive_link"><img src="uploads/topuprov.png" alt="ROV"></a></div>
-                <div class="product-card"><a href="https://drive.google.com/file/d/1LxEwtf4czvAtHRh8WeD598b-PTBYPYXT/view?usp=drive_link"><img src="uploads/topupmlbb.png" alt="MLBB"></a></div>
-				<div class="product-card"><a href="https://drive.google.com/file/d/1LxEwtf4czvAtHRh8WeD598b-PTBYPYXT/view?usp=drive_link"><img src="uploads/topuphok.png.png" alt="HOK"></a></div>
-            </div>
+        <div class="section-title"><i class="fas fa-shopping-cart"></i> บริการเติมเกม</div>
+        <div class="scroll-wrapper">
+            <div class="image-card"><img src="topup1.jpg" alt="Topup"></div>
+            <div class="image-card"><img src="topup2.jpg" alt="Topup"></div>
         </div>
-        <div class="section">
-            <h2>📱 จำหน่ายแอพพรีเมี่ยม</h2>
-            <p style="margin-bottom:10px; font-size:14px; color:var(--dark); opacity: 0.8;">แอพราคาถูก</p>
-            <div class="scroll-container">
-                <div class="product-card"><a href="ใส่ลิ้งค์ที่นี่"><img src="app1.jpg" alt="App"></a></div>
-                <div class="product-card"><a href="ใส่ลิ้งค์ที่นี่"><img src="app2.jpg" alt="App"></a></div>
-            </div>
-        </div>
+        
+        <div class="section-title"><i class="fas fa-crown"></i> แอพพรีเมี่ยม</div>
+        <a href="#" class="link-item"><i class="fab fa-youtube"></i> YouTube Premium</a>
+        <a href="#" class="link-item"><i class="fab fa-spotify"></i> Spotify Family</a>
+        <a href="#" class="link-item"><i class="fas fa-film"></i> Netflix Profile</a>
     </div>
 
     <div id="contact" class="page">
-        <div class="section center">
-            <h2>📱 ช่องทางติดต่อ</h2>
-            <div style="margin: 20px 0;">
-                <p style="color:var(--dark); margin-bottom: 10px;">สามารถสอบถามจูได้ทุกช่องทางเลยน้า</p>
-            </div>
-            <a href="https://line.me/ti/p/LfBtdhlrVa" class="btn btn-main">ทักแชท LINE 🎀</a>
-            <div class="socials">
-                <a href="https://www.facebook.com/profile.php?id=61586046260927" target="_blank">Facebook</a>
-                <a href="https://line.me/ti/p/LfBtdhlrVa" target="_blank">LINE</a>
-            </div>
-        </div>
-        <div class="footer">
-            <p class="small">© 2026 Julylynchu Store • All Rights Reserved</p>
+        <div class="section-title"><i class="fas fa-comments"></i> ช่องทางติดต่อ</div>
+        <a href="https://line.me/ti/p/LfBtdhlrVa" class="link-item">
+            <i class="fab fa-line"></i> LINE Official
+        </a>
+        <a href="https://www.facebook.com/profile.php?id=61586046260927" class="link-item">
+            <i class="fab fa-facebook"></i> Facebook Page
+        </a>
+        
+        <div class="profile-card" style="margin-top: 30px; padding: 20px;">
+            <p style="color: #ff66aa; font-weight: 500;">⚠️ กฎของร้าน</p>
+            <p style="font-size: 13px;">หากโอนเงินแล้วไม่คืนเงินทุกกรณี<br>จอง = โอน เท่านั้นนะคะ</p>
         </div>
     </div>
 
 </div>
 
-<nav class="bottom-nav">
-    <div class="nav-item active" onclick="switchTab('home')">
-        <img src="uploads/home.png" class="nav-icon">หน้าแรก
-    </div>
-    <div class="nav-item" onclick="switchTab('rent')">
-        <img src="uploads/game-console.png" class="nav-icon">เช่ารหัส
-    </div>
-    <div class="nav-item" onclick="switchTab('shop')">
-        <img src="uploads/layout.png" class="nav-icon">บริการ
-    </div>
-    <div class="nav-item" onclick="switchTab('contact')">
-        <img src="uploads/communicate.png" class="nav-icon">ติดต่อ
-    </div>
+<nav class="navbar">
+    <a href="#" class="nav-link active" onclick="switchTab('home')"><i class="fas fa-home"></i></a>
+    <a href="#" class="nav-link" onclick="switchTab('rent')"><i class="fas fa-gamepad"></i></a>
+    <a href="#" class="nav-link" onclick="switchTab('shop')"><i class="fas fa-store"></i></a>
+    <a href="#" class="nav-link" onclick="switchTab('contact')"><i class="fas fa-user"></i></a>
 </nav>
 
 <script>
-function switchTab(tabId) {
-    const pages = document.querySelectorAll('.page');
-    pages.forEach(page => page.classList.remove('active'));
-    const navItems = document.querySelectorAll('.nav-item');
-    navItems.forEach(item => item.classList.remove('active'));
-    document.getElementById(tabId).classList.add('active');
-    const activeNav = Array.from(navItems).find(item => 
-        item.getAttribute('onclick').includes(tabId)
-    );
-    if(activeNav) activeNav.classList.add('active');
-    window.scrollTo({ top: 0, behavior: 'smooth' });
-}
+    function switchTab(tabId) {
+        // Switch Pages
+        document.querySelectorAll('.page').forEach(p => p.classList.remove('active'));
+        document.getElementById(tabId).classList.add('active');
 
-// ระบบ Drag to Scroll และ Click Link
-const containers = document.querySelectorAll('.scroll-container');
-containers.forEach(slider => {
-    let isDown = false;
-    let startX;
-    let scrollLeft;
-    let isMoved = false;
-
-    slider.addEventListener('mousedown', (e) => {
-        isDown = true;
-        isMoved = false;
-        startX = e.pageX - slider.offsetLeft;
-        scrollLeft = slider.scrollLeft;
-    });
-
-    slider.addEventListener('mouseleave', () => { isDown = false; });
-    slider.addEventListener('mouseup', () => { isDown = false; });
-
-    slider.addEventListener('mousemove', (e) => {
-        if(!isDown) return;
-        const x = e.pageX - slider.offsetLeft;
-        const walk = (x - startX) * 2;
-        if (Math.abs(x - startX) > 5) {
-            isMoved = true;
-        }
-        slider.scrollLeft = scrollLeft - walk;
-    });
-
-    slider.querySelectorAll('a').forEach(link => {
-        link.addEventListener('click', (e) => {
-            if (isMoved) {
-                e.preventDefault();
+        // Update Nav Icons
+        document.querySelectorAll('.nav-link').forEach(l => {
+            l.classList.remove('active');
+            if(l.getAttribute('onclick').includes(tabId)) {
+                l.classList.add('active');
             }
         });
-    });
-});
+
+        window.scrollTo({ top: 0, behavior: 'smooth' });
+    }
 </script>
 
 </body>
