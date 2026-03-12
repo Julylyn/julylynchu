@@ -56,7 +56,7 @@
         }
         body::before { top: -100px; left: -150px; }
         body::after { bottom: -100px; right: -150px; background: #74645E; }
-        @keyframes floatGlow { from { transform: translate(0, 0); } to { transform: translate(60px, 60px); } }
+        @keyframes floatGlow { from { transform: translate(0, 0); } to { transform: translate(40px, 40px); } }
 
         .container { max-width: 500px; margin: 0 auto; padding: 20px 15px 100px; position: relative; z-index: 1; }
 
@@ -69,10 +69,7 @@
         }
 
         .cover-img {
-            width: 100%;
-            height: 150px;
-            object-fit: cover;
-            cursor: zoom-in;
+            width: 100%; height: 150px; object-fit: cover; cursor: zoom-in;
             border-bottom: 1.5px solid var(--secondary);
         }
 
@@ -80,11 +77,8 @@
             width: 110px; height: 110px; 
             border-radius: 50%; border: 4px solid #fff;
             box-shadow: 0 4px 15px rgba(116, 100, 94, 0.2); 
-            margin-top: -55px;
-            position: relative;
-            object-fit: cover;
-            cursor: zoom-in;
-            background-color: white;
+            margin-top: -55px; position: relative;
+            object-fit: cover; cursor: zoom-in; background-color: white;
         }
 
         .profile-info { padding: 15px 20px 0; }
@@ -121,7 +115,6 @@
         .scroll-wrapper { display: flex; overflow-x: auto; gap: 12px; padding: 10px 5px 20px; scroll-snap-type: x mandatory; scrollbar-width: none; }
         .scroll-wrapper::-webkit-scrollbar { display: none; }
         
-        /* สไตล์หลักสำหรับ Card ที่มีรูป 1:1 */
         .item-card {
             flex: 0 0 180px;
             display: flex;
@@ -145,7 +138,6 @@
         .image-card:hover { border-color: var(--secondary); box-shadow: var(--border-glow); }
         .image-card img { width: 100%; height: 100%; object-fit: cover; }
 
-        /* ป้ายแท็กมุมซ้ายบน */
         .img-tag {
             position: absolute;
             top: 8px;
@@ -161,7 +153,6 @@
             border: 1px solid rgba(255,255,255,0.3);
         }
 
-        /* ข้อความรายละเอียดใต้รูป */
         .card-detail {
             text-align: center;
             font-size: 13px;
@@ -273,71 +264,71 @@
         <div class="game-label">ROV</div>
         <div class="scroll-wrapper">
             <div class="item-card">
-                <div class="image-card"><img src="idforrent/a3.jpeg" alt="ROV 1" onclick="openModal(this.src)"></div>
+                <div class="image-card"><img src="idforrent/a3.jpeg" alt="ROV" onclick="openModal(this.src)"></div>
                 <div class="card-detail">VIP10<br>40฿/Hr</div>
             </div>
             <div class="item-card">
-                <div class="image-card"><img src="idforrent/bp1.jpeg" alt="ROV 2" onclick="openModal(this.src)"></div>
+                <div class="image-card"><img src="idforrent/bp1.jpeg" alt="ROV" onclick="openModal(this.src)"></div>
                 <div class="card-detail">VIP10<br>25฿/Hr</div>
             </div>
             <div class="item-card">
-                <div class="image-card"><img src="idforrent/bp2.jpeg" alt="ROV 3" onclick="openModal(this.src)"></div>
+                <div class="image-card"><img src="idforrent/bp2.jpeg" alt="ROV" onclick="openModal(this.src)"></div>
                 <div class="card-detail">VIP10<br>30฿/Hr</div>
             </div>
             <div class="item-card">
-                <div class="image-card"><img src="idforrent/bp3.jpeg" alt="ROV 4" onclick="openModal(this.src)"></div>
+                <div class="image-card"><img src="idforrent/bp3.jpeg" alt="ROV" onclick="openModal(this.src)"></div>
                 <div class="card-detail">VIP10<br>30฿/Hr</div>
             </div>
             <div class="item-card">
-                <div class="image-card"><img src="idforrent/m1.jpeg" alt="ROV 5" onclick="openModal(this.src)"></div>
+                <div class="image-card"><img src="idforrent/m1.jpeg" alt="ROV" onclick="openModal(this.src)"></div>
                 <div class="card-detail">VIP10<br>30฿/Hr</div>
             </div>
             <div class="item-card">
-                <div class="image-card"><img src="idforrent/m2.jpeg" alt="ROV 6" onclick="openModal(this.src)"></div>
+                <div class="image-card"><img src="idforrent/m2.jpeg" alt="ROV" onclick="openModal(this.src)"></div>
                 <div class="card-detail">VIP10<br>30฿/Hr</div>
             </div>
             <div class="item-card">
-                <div class="image-card"><img src="idforrent/m4.jpeg" alt="ROV 7" onclick="openModal(this.src)"></div>
+                <div class="image-card"><img src="idforrent/m4.jpeg" alt="ROV" onclick="openModal(this.src)"></div>
                 <div class="card-detail">VIP10<br>35฿/Hr</div>
             </div>
             <div class="item-card">
-                <div class="image-card"><img src="idforrent/m6.jpeg" alt="ROV 8" onclick="openModal(this.src)"></div>
+                <div class="image-card"><img src="idforrent/m6.jpeg" alt="ROV" onclick="openModal(this.src)"></div>
                 <div class="card-detail">VIP10<br>30฿/Hr</div>
             </div>
             <div class="item-card">
-                <div class="image-card"><img src="idforrent/mo10.jpeg" alt="ROV 9" onclick="openModal(this.src)"></div>
+                <div class="image-card"><img src="idforrent/mo10.jpeg" alt="ROV" onclick="openModal(this.src)"></div>
                 <div class="card-detail">VIP10<br>40฿/Hr</div>
             </div>
             <div class="item-card">
-                <div class="image-card"><img src="idforrent/oh1.jpeg" alt="ROV 10" onclick="openModal(this.src)"></div>
+                <div class="image-card"><img src="idforrent/oh1.jpeg" alt="ROV" onclick="openModal(this.src)"></div>
                 <div class="card-detail">VIP10<br>25฿/Hr</div>
             </div>
             <div class="item-card">
-                <div class="image-card"><img src="idforrent/oh2.png" alt="ROV 11" onclick="openModal(this.src)"></div>
+                <div class="image-card"><img src="idforrent/oh2.png" alt="ROV" onclick="openModal(this.src)"></div>
                 <div class="card-detail">VIP10<br>25฿/Hr</div>
             </div>
             <div class="item-card">
-                <div class="image-card"><img src="idforrent/oh3.jpeg" alt="ROV 12" onclick="openModal(this.src)"></div>
+                <div class="image-card"><img src="idforrent/oh3.jpeg" alt="ROV" onclick="openModal(this.src)"></div>
                 <div class="card-detail">VIP10<br>30฿/Hr</div>
             </div>
             <div class="item-card">
-                <div class="image-card"><img src="idforrent/oh5.jpeg" alt="ROV 13" onclick="openModal(this.src)"></div>
+                <div class="image-card"><img src="idforrent/oh5.jpeg" alt="ROV" onclick="openModal(this.src)"></div>
                 <div class="card-detail">VIP10<br>35฿/Hr</div>
             </div>
             <div class="item-card">
-                <div class="image-card"><img src="idforrent/oh6.jpeg" alt="ROV 14" onclick="openModal(this.src)"></div>
+                <div class="image-card"><img src="idforrent/oh6.jpeg" alt="ROV" onclick="openModal(this.src)"></div>
                 <div class="card-detail">VIP10<br>35฿/Hr</div>
             </div>
             <div class="item-card">
-                <div class="image-card"><img src="idforrent/oh8.jpeg" alt="ROV 15" onclick="openModal(this.src)"></div>
+                <div class="image-card"><img src="idforrent/oh8.jpeg" alt="ROV" onclick="openModal(this.src)"></div>
                 <div class="card-detail">VIP10<br>30฿/Hr</div>
             </div>
             <div class="item-card">
-                <div class="image-card"><img src="idforrent/pon01.jpeg" alt="ROV 16" onclick="openModal(this.src)"></div>
+                <div class="image-card"><img src="idforrent/pon01.jpeg" alt="ROV" onclick="openModal(this.src)"></div>
                 <div class="card-detail">VIP10<br>50฿/Hr</div>
             </div>
             <div class="item-card">
-                <div class="image-card"><img src="idforrent/q1.jpeg" alt="ROV 17" onclick="openModal(this.src)"></div>
+                <div class="image-card"><img src="idforrent/q1.jpeg" alt="ROV" onclick="openModal(this.src)"></div>
                 <div class="card-detail">VIP10<br>30฿/Hr</div>
             </div>
         </div>
@@ -373,22 +364,22 @@
         <div class="game-label">ROV</div>
         <div class="scroll-wrapper">
             <div class="item-card">
-                <div class="image-card"><img src="sell_rov1.jpg" alt="Sell ROV 1" onclick="openModal(this.src)"></div>
+                <div class="image-card"><img src="sell_rov1.jpg" alt="Sell ROV" onclick="openModal(this.src)"></div>
                 <div class="card-detail">ID01<br>Price 0000</div>
             </div>
             <div class="item-card">
-                <div class="image-card"><img src="sell_rov2.jpg" alt="Sell ROV 2" onclick="openModal(this.src)"></div>
+                <div class="image-card"><img src="sell_rov2.jpg" alt="Sell ROV" onclick="openModal(this.src)"></div>
                 <div class="card-detail">ID02<br>Price 0000</div>
             </div>
         </div>
         <div class="game-label">MLBB</div>
         <div class="scroll-wrapper">
             <div class="item-card">
-                <div class="image-card"><img src="sell_mlbb1.jpg" alt="Sell MLBB 1" onclick="openModal(this.src)"></div>
+                <div class="image-card"><img src="sell_mlbb1.jpg" alt="Sell MLBB" onclick="openModal(this.src)"></div>
                 <div class="card-detail">ID03<br>Price 0000</div>
             </div>
             <div class="item-card">
-                <div class="image-card"><img src="sell_mlbb2.jpg" alt="Sell MLBB 2" onclick="openModal(this.src)"></div>
+                <div class="image-card"><img src="sell_mlbb2.jpg" alt="Sell MLBB" onclick="openModal(this.src)"></div>
                 <div class="card-detail">ID04<br>Price 0000</div>
             </div>
         </div>
